@@ -88,45 +88,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
         }
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
-            margin-top: 25px;
-        }
-        .module-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 22px;
-            border-radius: 12px;
-            color: var(--text-main);
-            text-align: left;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .module-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--itip-light-blue);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
-            background: #ffffff;
-        }
-        .module-card h3 {
-            margin: 0 0 8px 0;
-            font-size: 17px;
-            color: var(--itip-blue);
-            font-weight: 700;
-        }
-        .module-card p {
-            margin: 0;
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
         .instruction-box {
             background: #f8fafc;
             color: var(--text-main);
@@ -208,23 +169,18 @@
 
     <div class="container">
         
-        <!-- PANTALLA 1: BIENVENIDA (Solo botón Ver Instructivo & Rutina, tal como pediste en la 2da imagen) -->
+        <!-- PANTALLA 1: BIENVENIDA -->
         <div id="screen-home" class="screen active">
             <div class="preview-header" style="padding-top: 20px;">
                 <h1 style="font-size: 48px; color: var(--itip-blue);">iTEP</h1>
                 <h2>Simulador Oficial Profesional — CampusLA & Escuela Andina</h2>
             </div>
-            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 25px auto; 
-
-line-height: 1.6;">
-                Bienvenido al entorno oficial de certificación y práctica intensiva. Domina cada habilidad del 
-
-idioma bajo los estándares internacionales evaluados.
+            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 25px auto; line-height: 1.6;">
+                Bienvenido al entorno oficial de certificación y práctica intensiva. Domina cada habilidad del idioma bajo los estándares internacionales evaluados.
             </p>
             <div style="display: flex; flex-direction: column; gap: 4px; max-width: 400px; margin: 0 auto;">
-                <button class="btn-itip" style="background: var(--itip-blue);" onclick="goToScreen('screen-
-
-instructions')">📖 Ver Instructivo & Rutina</button>
+                <button class="btn-itip" style="background: var(--itip-blue);" onclick="goToScreen('screen-instructions')">📖 Ver Instructivo & Rutina</button>
+                <a href="itepdemomodulos.html" class="btn-itip" style="background: var(--itip-light-blue); text-decoration: none;">🚀 Ir al Tablero de Secciones (Módulos)</a>
             </div>
         </div>
 
@@ -235,184 +191,50 @@ instructions')">📖 Ver Instructivo & Rutina</button>
                 <h2>Guía de Ruta Estricta & Recursos Integrados</h2>
             </div>
             <div class="instruction-box">
-                <p><strong>¡Atención estudiante!</strong> Para avanzar de manera exitosa en este simulador y 
-
-aprobar las fases de certificación, utiliza los siguientes recursos clave mientras revisas las instrucciones:</p>
+                <p><strong>¡Atención estudiante!</strong> Para avanzar de manera exitosa en este simulador y aprobar las fases de certificación, utiliza los siguientes recursos clave mientras revisas las instrucciones:</p>
                 
                 <!-- BOTONES INTEGRADOS DENTRO DEL INSTRUCTIVO -->
                 <div class="instruction-buttons">
-                    <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" 
-
-style="margin:0; background: #d97706; font-size: 13px; padding: 10px;">🤖 Abrir Docente IA</a>
-                    <a href="Libro - Programa Inglés B1 Super Intensivo Esc...pdf" download class="btn-itip" 
-
-style="margin:0; background: #059669; font-size: 13px; padding: 10px;">📥 Descargar Libro B1</a>
-                    <a href="https://www.campuslatinoamerica.edu.co" target="_blank" class="btn-itip" 
-
-style="margin:0; background: #334155; font-size: 13px; padding: 10px;">🌐 Visitar CampusLA</a>
+                    <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" style="margin:0; background: #d97706; font-size: 13px; padding: 10px; text-decoration: none;">🤖 Abrir Docente IA</a>
+                    <a href="Libro%20-%20Programa%20Ingl%C3%A9s%20B1%20Super%20Intensivo%20Esc...pdf" download class="btn-itip" style="margin:0; background: #059669; font-size: 13px; padding: 10px; text-decoration: none;">📥 Descargar Libro B1</a>
+                    <a href="https://www.campuslatinoamerica.edu.co" target="_blank" class="btn-itip" style="margin:0; background: #334155; font-size: 13px; padding: 10px; text-decoration: none;">🌐 Visitar CampusLA</a>
                 </div>
 
-                <!-- ACCESO A EXAMEN REAL INTEGRADO AQUí -->
-                <div style="background: #eff6ff; border: 2px dashed #3b82f6; padding: 18px; border-radius: 10px; 
-
-margin-bottom: 20px; text-align: center;">
+                <!-- ACCESO A EXAMEN REAL INTEGRADO -->
+                <div style="background: #eff6ff; border: 2px dashed #3b82f6; padding: 18px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
                     <h3 style="margin-top: 0; color: #1e3a8a; border: none;">🚀 Acceso a Examen Real</h3>
-                    <p style="font-size: 13px; color: #475569; margin-bottom: 12px;">Integra el formulario oficial 
-
-de registro y validación biométrica con supervisión por cámara antes de iniciar los módulos.</p>
-                    <button class="btn-itip" style="margin: 0 auto; background: var(--itip-light-blue);" 
-
-onclick="goToScreen('screen-reg')">📝 Abrir Formulario de Registro Examen</button>
+                    <p style="font-size: 13px; color: #475569; margin-bottom: 12px;">Integra el formulario oficial de registro y validación biométrica con supervisión por cámara antes de iniciar los módulos.</p>
+                    <button class="btn-itip" style="margin: 0 auto; background: var(--itip-light-blue);" onclick="goToScreen('screen-reg')">📝 Abrir Formulario de Registro Examen</button>
                 </div>
 
                 <h3>1. Formulario de Registro para el Examen Real (Módulo 1)</h3>
-                <p><strong>⚠️ Advertencia de Vigilancia:</strong> La cámara de tu computador te estará vigilando y 
-
-grabando durante el proceso de registro y la ejecución del examen. Mantén buena postura y asegúrate de estar en un 
-
-espacio iluminado.</p>
-                <p><strong>📄 Requisito de Identidad:</strong> Ten lista digitalmente tu cédula o documento de 
-
-identidad en el computador para cargarlo o tómale una foto en tiempo real abriendo la cámara del sistema. Ten clara 
-
-también tu dirección de residencia exacta.</p>
+                <p><strong>⚠️ Advertencia de Vigilancia:</strong> La cámara de tu computador te estará vigilando y grabando durante el proceso de registro y la ejecución del examen. Mantén buena postura y asegúrate de estar en un espacio iluminado.</p>
+                <p><strong>📄 Requisito de Identidad:</strong> Ten lista digitalmente tu cédula o documento de identidad en el computador para cargarlo o tómale una foto en tiempo real abriendo la cámara del sistema. Ten clara también tu dirección de residencia exacta.</p>
                 
-                <p style="margin-top: 10px; font-weight: bold; color: var(--itip-blue);">Traducción y guía exacta 
-
-de qué escribir en cada casilla del formulario:</p>
+                <p style="margin-top: 10px; font-weight: bold; color: var(--itip-blue);">Traducción y guía exacta de qué escribir en cada casilla del formulario:</p>
                 <ul>
-                    <li><strong>Last (Family or Surname) Name:</strong> Escribe tu apellido completo (Ej. Alvarez 
-
-Salamanca).</li>
+                    <li><strong>Last (Family or Surname) Name:</strong> Escribe tu apellido completo (Ej. Alvarez Salamanca).</li>
                     <li><strong>First Name (Given Name):</strong> Escribe tu nombre de pila (Ej. Hollman).</li>
-                    <li><strong>Identification / Cédula Number:</strong> Tu número de documento oficial de 
-
-identidad sin puntos ni espacios.</li>
-                    <li><strong>Address of Residence:</strong> Tu dirección exacta de residencia para validación de 
-
-envío de certificado.</li>
-                    <li><strong>Email Address:</strong> Correo electrónico activo y personal (preferiblemente 
-
-institucional @campuslatinoamerica.edu.co).</li>
-                    <li><strong>Gender:</strong> Selecciona tu género (Male para masculino, Female para 
-
-femenino).</li>
-                    <li><strong>Country of Residence:</strong> Selecciona tu país de residencia actual (Ej. 
-
-Colombia).</li>
+                    <li><strong>Identification / Cédula Number:</strong> Tu número de documento oficial de identidad sin puntos ni espacios.</li>
+                    <li><strong>Address of Residence:</strong> Tu dirección exacta de residencia para validación de envío de certificado.</li>
+                    <li><strong>Email Address:</strong> Correo electrónico activo y personal (preferiblemente institucional @campuslatinoamerica.edu.co).</li>
+                    <li><strong>Gender:</strong> Selecciona tu género (Male para masculino, Female para femenino).</li>
+                    <li><strong>Country of Residence:</strong> Selecciona tu país de residencia actual (Ej. Colombia).</li>
                     <li><strong>Native Language:</strong> Selecciona tu lengua nativa (Spanish).</li>
                 </ul>
 
                 <h3>2. Requisitos por Sección en el Panel</h3>
                 <ul>
-                    <li><strong>Gramática:</strong> Resuelve y analiza las estructuras de los 22 tiempos 
-
-requeridos.</li>
-                    <li><strong>Lectura (Reading):</strong> Lee con atención los textos y responde cada ítem de 
-
-comprensión.</li>
-                    <li><strong>Escritura:</strong> Redacta los ensayos cortos aplicando sintaxis formal.</li>
-                    <li><strong>Palabra Incorrecta:</strong> Detecta y corrige los errores léxicos a 
-
-contrarreloj.</li>
-                    <li><strong>Speaking:</strong> Practica tu fluidez, modulación y técnicas de parafraseo 
-
-mediante audio.</li>
+                    <li><strong>Gramática (`preguntasitep.html`):</strong> Resuelve y analiza las estructuras de los 22 tiempos requeridos.</li>
+                    <li><strong>Lectura (`lecturasitep.html`):</strong> Lee con atención los textos y responde cada ítem de comprensión.</li>
+                    <li><strong>Escritura (`escrituraitep.html`):</strong> Redacta los ensayos cortos aplicando sintaxis formal.</li>
+                    <li><strong>Palabra Incorrecta (`palabraincorrectaitep.html`):</strong> Detecta y corrige los errores léxicos a contrarreloj.</li>
+                    <li><strong>Speaking (`speakingitep.html`):</strong> Practica tu fluidez, modulación y técnicas de parafraseo mediante audio.</li>
                 </ul>
             </div>
             <div class="btn-group">
-                <button class="btn-itip" style="background: #64748b; width: auto; padding: 11px 20px; margin:0;" 
-
-onclick="goToScreen('screen-home')">⬅️ Volver</button>
-                <button class="btn-itip" style="background: var(--itip-blue); width: auto; padding: 11px 22px; 
-
-margin:0;" onclick="goToScreen('screen-dashboard')">🚀 Ir al Dashboard de Módulos ➔</button>
-            </div>
-        </div>
-
-        <!-- DASHBOARD / MENÚ PRINCIPAL DE MÓDULOS -->
-        <div id="screen-dashboard" class="screen">
-            <div class="preview-header">
-                <h1>iTEP Dashboard Principal</h1>
-                <h2>Acceso a Examen Real y Módulos de Práctica</h2>
-            </div>
-            <div class="dashboard-grid">
-                <div class="module-card" onclick="goToScreen('screen-reg')">
-                    <div>
-                        <h3>1. Formulario de Registro Examen</h3>
-                        <p>Acceso a examen real, validación con cámara, cédula y campos traducidos.</p>
-                    </div>
-                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 
-
-12px;">Iniciar Registro ➔</span>
-                </div>
-                <a href="preguntasitep.html" class="module-card">
-                    <div>
-                        <h3>2. Gramática</h3>
-                        <p>Evaluación interactiva de estructuras gramaticales avanzadas.</p>
-                    </div>
-                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 
-
-12px;">Practicar ➔</span>
-                </a>
-                <a href="lecturasitep.html" class="module-card" style="border-left: 4px solid #059669;">
-                    <div>
-                        <h3>3. Lectura (Reading)</h3>
-                        <p>Comprensión de textos, análisis y preguntas de selección múltiple.</p>
-                    </div>
-                    <span style="font-size: 12px; font-weight: 600; color: #059669; margin-top: 12px;">Practicar 
-
-➔</span>
-                </a>
-                <a href="escrituraitep.html" class="module-card">
-                    <div>
-                        <h3>4. Escritura</h3>
-                        <p>Redacción de ensayos cortos y supervisión sintáctica.</p>
-                    </div>
-                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 
-
-12px;">Practicar ➔</span>
-                </a>
-                <a href="palabraincorrectaitep.html" class="module-card">
-                    <div>
-                        <h3>5. Palabra Incorrecta</h3>
-                        <p>Identificación rápida de errores de concordancia y léxico.</p>
-                    </div>
-                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 
-
-12px;">Practicar ➔</span>
-                </a>
-                <a href="speakingitep.html" class="module-card">
-                    <div>
-                        <h3>6. Speaking</h3>
-                        <p>Práctica de expresión oral y técnicas de parafraseo.</p>
-                    </div>
-                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 
-
-12px;">Practicar ➔</span>
-                </a>
-                <a href="itepdemomodulos.html" class="module-card" style="background: #f8fafc; border-color: 
-
-#cbd5e1; grid-column: 1 / -1;">
-                    <div>
-                        <h3>7. Panel Secundario (Módulos Extra)</h3>
-                        <p>Acceso a recursos complementarios configurados en el repositorio.</p>
-                    </div>
-                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-blue); margin-top: 12px;">Ver 
-
-Módulos Extra ➔</span>
-                </a>
-            </div>
-            <div class="btn-group" style="margin-top: 25px;">
-                <button class="btn-itip" style="background: #64748b; width: auto; padding: 10px 18px; margin:0;" 
-
-onclick="goToScreen('screen-instructions')">📖 Ver Instructivo</button>
-                <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" style="background: 
-
-#d97706; width: auto; padding: 10px 18px; margin:0;">🤖 Docente IA</a>
-                <button class="btn-itip" style="background: var(--itip-blue); width: auto; padding: 10px 18px; 
-
-margin:0;" onclick="goToScreen('screen-home')">🏠 Inicio</button>
+                <button class="btn-itip" style="background: #64748b; width: auto; padding: 11px 20px; margin:0;" onclick="goToScreen('screen-home')">⬅️ Volver</button>
+                <a href="itepdemomodulos.html" class="btn-itip" style="background: var(--itip-blue); width: auto; padding: 11px 22px; margin:0; text-decoration: none;">🚀 Ir al Tablero de Secciones ➔</a>
             </div>
         </div>
 
@@ -422,61 +244,39 @@ margin:0;" onclick="goToScreen('screen-home')">🏠 Inicio</button>
                 <h1>iTEP Registration — Examen Real</h1>
                 <h2>Formulario Oficial de Registro y Validación por Cámara</h2>
             </div>
-            <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 8px; 
-
-margin-bottom: 20px; font-size: 13px; color: #1e3a8a;">
-                📷 <strong>Aviso de Proctoring (Cámara activa):</strong> Su cámara web se encuentra encendida para 
-
-la captura de identidad y supervisión en tiempo real. Tenga su cédula lista.
+            <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; color: #1e3a8a;">
+                📷 <strong>Aviso de Proctoring (Cámara activa):</strong> Su cámara web se encuentra encendida para la captura de identidad y supervisión en tiempo real. Tenga su cédula lista.
             </div>
             <div class="reg-box">
                 <div class="form-group">
-                    <label>Last (Family or Surname) Name <small style="display:block; color:var(--text-muted); 
-
-font-weight:normal;">(Apellido)</small>:</label>
+                    <label>Last (Family or Surname) Name <small style="display:block; color:var(--text-muted); font-weight:normal;">(Apellido)</small>:</label>
                     <input type="text" id="reg-lastname" placeholder="Ej. Alvarez Salamanca">
                 </div>
                 <div class="form-group">
-                    <label>First Name (Given Name) <small style="display:block; color:var(--text-muted); font-
-
-weight:normal;">(Nombre)</small>:</label>
+                    <label>First Name (Given Name) <small style="display:block; color:var(--text-muted); font-weight:normal;">(Nombre)</small>:</label>
                     <input type="text" id="reg-firstname" placeholder="Ej. Hollman">
                 </div>
                 <div class="form-group">
-                    <label>* Identification / Cédula Number <small style="display:block; color:var(--text-muted); 
-
-font-weight:normal;">(Número de Documento)</small>:</label>
+                    <label>* Identification / Cédula Number <small style="display:block; color:var(--text-muted); font-weight:normal;">(Número de Documento)</small>:</label>
                     <input type="text" id="reg-id" placeholder="Número de documento oficial">
                 </div>
                 <div class="form-group">
-                    <label>* Address of Residence <small style="display:block; color:var(--text-muted); font-
-
-weight:normal;">(Dirección de Residencia)</small>:</label>
+                    <label>* Address of Residence <small style="display:block; color:var(--text-muted); font-weight:normal;">(Dirección de Residencia)</small>:</label>
                     <input type="text" id="reg-address" placeholder="Ej. Calle Principal # 12-34">
                 </div>
                 <div class="form-group">
-                    <label>* Email Address <small style="display:block; color:var(--text-muted); font-
-
-weight:normal;">(Correo Electrónico)</small>:</label>
+                    <label>* Email Address <small style="display:block; color:var(--text-muted); font-weight:normal;">(Correo Electrónico)</small>:</label>
                     <input type="email" id="reg-email" placeholder="correo@campuslatinoamerica.edu.co">
                 </div>
                 <div class="form-group">
-                    <label>* Gender <small style="display:block; color:var(--text-muted); font-weight:normal;">
-
-(Género)</small>:</label>
+                    <label>* Gender <small style="display:block; color:var(--text-muted); font-weight:normal;">(Género)</small>:</label>
                     <div class="radio-group">
-                        <label style="font-weight: normal; cursor:pointer;"><input type="radio" name="gender" 
-
-value="Male"> Male</label>
-                        <label style="font-weight: normal; cursor:pointer;"><input type="radio" name="gender" 
-
-value="Female"> Female</label>
+                        <label style="font-weight: normal; cursor:pointer;"><input type="radio" name="gender" value="Male"> Male</label>
+                        <label style="font-weight: normal; cursor:pointer;"><input type="radio" name="gender" value="Female"> Female</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>* Country of Residence <small style="display:block; color:var(--text-muted); font-
-
-weight:normal;">(País de Residencia)</small>:</label>
+                    <label>* Country of Residence <small style="display:block; color:var(--text-muted); font-weight:normal;">(País de Residencia)</small>:</label>
                     <select id="reg-country">
                         <option value="">Select Country</option>
                         <option value="Colombia">Colombia</option>
@@ -485,9 +285,7 @@ weight:normal;">(País de Residencia)</small>:</label>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>* Native Language <small style="display:block; color:var(--text-muted); font-
-
-weight:normal;">(Lengua Nativa)</small>:</label>
+                    <label>* Native Language <small style="display:block; color:var(--text-muted); font-weight:normal;">(Lengua Nativa)</small>:</label>
                     <select id="reg-native">
                         <option value="">Select Language</option>
                         <option value="Spanish">Spanish</option>
@@ -495,19 +293,13 @@ weight:normal;">(Lengua Nativa)</small>:</label>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Agency Name <small style="display:block; color:var(--text-muted); font-weight:normal;">
-
-(Centro Autorizado)</small>:</label>
+                    <label>Agency Name <small style="display:block; color:var(--text-muted); font-weight:normal;">(Centro Autorizado)</small>:</label>
                     <input type="text" value="CampusLA & Escuela Andina" readonly style="background: #f1f5f9;">
                 </div>
             </div>
             <div class="btn-group">
-                <button class="btn-itip" style="background: #64748b; width: auto; padding: 11px 20px; margin:0;" 
-
-onclick="goToScreen('screen-instructions')">⬅️ Volver al Instructivo</button>
-                <a href="preguntasitep.html" class="btn-itip" style="background: var(--itip-light-blue); width: 
-
-auto; padding: 11px 20px; margin:0; text-decoration: none;">Guardar y Avanzar a Gramática ➔</a>
+                <button class="btn-itip" style="background: #64748b; width: auto; padding: 11px 20px; margin:0;" onclick="goToScreen('screen-instructions')">⬅️ Volver al Instructivo</button>
+                <a href="preguntasitep.html" class="btn-itip" style="background: var(--itip-light-blue); width: auto; padding: 11px 20px; margin:0; text-decoration: none;">Guardar y Avanzar a Gramática ➔</a>
             </div>
         </div>
 
@@ -516,8 +308,11 @@ auto; padding: 11px 20px; margin:0; text-decoration: none;">Guardar y Avanzar a 
     <script>
         function goToScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-            window.scrollTo(0, 0);
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+                window.scrollTo(0, 0);
+            }
         }
     </script>
 </body>
