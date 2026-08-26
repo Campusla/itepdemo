@@ -180,12 +180,9 @@
         <div class="header-section">
             <div>
                 <h1>Módulo de Lectura (Reading) — iTEP Official Simulator</h1>
-                <p style="margin: 4px 0 0 0; font-size: 13px; color: var(--text-muted);">5 Lecturas de tipo página 
-
-completa con 10 preguntas cada una (Total: 50 ítems de alta exigencia).</p>
+                <p style="margin: 4px 0 0 0; font-size: 13px; color: var(--text-muted);">5 Lecturas de tipo página completa con 10 preguntas cada una (Total: 50 ítems de alta exigencia).</p>
             </div>
             <div class="nav-passages" id="passage-nav-buttons">
-                <!-- Se generan mediante script o botones fijos -->
                 <button class="btn-passage active" onclick="switchPassage(0)">Lectura 1</button>
                 <button class="btn-passage" onclick="switchPassage(1)">Lectura 2</button>
                 <button class="btn-passage" onclick="switchPassage(2)">Lectura 3</button>
@@ -197,23 +194,15 @@ completa con 10 preguntas cada una (Total: 50 ítems de alta exigencia).</p>
         <div class="reading-layout">
             <!-- PANEL IZQUIERDO: TEXTO DE UNA PÁGINA -->
             <div>
-                <div class="text-panel" id="passage-text-container">
-                    <!-- Contenido inyectado dinámicamente -->
-                </div>
+                <div class="text-panel" id="passage-text-container"></div>
                 
                 <!-- TIPS Y TRUCOS PARA AVANZAR -->
                 <div class="tips-box">
                     <h4>💡 Tips & Trucos iTEP Reading Pro:</h4>
                     <ul style="margin: 0; padding-left: 18px; line-height: 1.5;">
-                        <li><strong>Skimming (Lectura rápida global):</strong> Lee primero los títulos y el primer 
-
-renglón de cada párrafo para captar la idea central en menos de 30 segundos.</li>
-                        <li><strong>Scanning (Búsqueda focalizada):</strong> No leas palabra por palabra al 
-
-responder; busca fechas, nombres propios o palabras clave de la pregunta dentro del texto.</li>
-                        <li><strong>Cuidado con los distractores:</strong> Las opciones incorrectas suelen usar 
-
-palabras idénticas al texto pero cambian el sentido lógico o la consecuencia.</li>
+                        <li><strong>Skimming (Lectura rápida global):</strong> Lee primero los títulos y el primer renglón de cada párrafo para captar la idea central en menos de 30 segundos.</li>
+                        <li><strong>Scanning (Búsqueda focalizada):</strong> No leas palabra por palabra al responder; busca fechas, nombres propios o palabras clave de la pregunta dentro del texto.</li>
+                        <li><strong>Cuidado con los distractores:</strong> Las opciones incorrectas suelen usar palabras idénticas al texto pero cambian el sentido lógico o la consecuencia.</li>
                     </ul>
                 </div>
             </div>
@@ -221,530 +210,119 @@ palabras idénticas al texto pero cambian el sentido lógico o la consecuencia.<
             <!-- PANEL DERECHO: PREGUNTAS (1 a 10 por lectura) -->
             <div class="question-panel">
                 <div>
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; 
-
-color: var(--text-muted); margin-bottom: 8px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px;">
                         <span id="question-counter">Pregunta 1 de 10</span>
                         <span id="passage-indicator">Lectura 1</span>
                     </div>
-                    <div class="question-title" id="question-text">
-                        Cargando pregunta...
-                    </div>
-                    <div class="options-list" id="options-container">
-                        <!-- Opciones de respuesta -->
-                    </div>
+                    <div class="question-title" id="question-text">Cargando pregunta...</div>
+                    <div class="options-list" id="options-container"></div>
                 </div>
 
                 <div class="controls-row">
-                    <button class="btn-action" style="background: #64748b;" onclick="prevQuestion()">⬅️ 
-
-Anterior</button>
-                    <span id="score-display" style="font-size: 13px; font-weight: 600; color: var(--itip-
-
-blue);">Progreso: 0/10</span>
+                    <button class="btn-action" style="background: #64748b;" onclick="prevQuestion()">⬅️ Anterior</button>
+                    <span id="score-display" style="font-size: 13px; font-weight: 600; color: var(--itip-blue);">Progreso: 0/10</span>
                     <button class="btn-action" onclick="nextQuestion()">Siguiente ➔</button>
                 </div>
             </div>
         </div>
 
         <div class="footer-nav">
-            <a href="frontitepdemo.html" style="text-decoration: none; font-size: 13px; font-weight: 600; color: 
-
-var(--itip-light-blue);">🏠 Volver al Dashboard Principal</a>
-            <span style="font-size: 12px; color: var(--text-muted);">CampusLA & Escuela Andina — Certificación 
-
-Internacional iTEP</span>
+            <a href="frontitepdemo.html" style="text-decoration: none; font-size: 13px; font-weight: 600; color: var(--itip-light-blue);">🏠 Volver al Dashboard Principal</a>
+            <span style="font-size: 12px; color: var(--text-muted);">CampusLA & Escuela Andina — Certificación Internacional iTEP</span>
         </div>
 
     </div>
 
     <script>
-        // Base de datos estructurada con 5 lecturas y 10 preguntas cada una (Simulador real iTEP)
         const readingData = [
             {
                 title: "Passage 1: The Evolution of Modern Urban Transportation",
-                text: `Urban transportation has undergone massive transformations over the past two centuries. At 
-
-the dawn of the industrial revolution, cities expanded outward as steam-powered trains and horse-drawn omnibuses 
-
-allowed workers to commute from suburban enclaves into dense industrial cores. By the late 19th century, electric 
-
-streetcars revolutionized cityscapes, offering cleaner, faster, and more reliable transit options than their 
-
-animal-powered predecessors. These infrastructural leaps not only shaped urban geography but also dictated economic 
-
-stratification, as residential property values surged along established transit corridors.<br><br>
-                Entering the 20th century, the widespread adoption of the internal combustion engine shifted the 
-
-paradigm toward private automobile ownership. City planners began designing sprawling highway systems, multi-lane 
-
-parkways, and expansive parking lots, often at the expense of historical neighborhoods and pedestrian pathways. 
-
-While automobiles granted unprecedented personal mobility and stimulated suburbanization on an unprecedented scale, 
-
-they simultaneously introduced severe systemic challenges: chronic traffic congestion, elevated carbon emissions, 
-
-and escalating rates of traffic-related fatalities. Consequently, contemporary urban centers face the complex 
-
-challenge of retrofitting their transit grids.<br><br>
-                Today, 21st-century mobility strategies prioritize multi-modal ecosystems that integrate electric 
-
-buses, high-capacity light rail networks, and protected bicycle infrastructure. Moreover, ride-sharing platforms 
-
-and autonomous vehicle pilots are redefining the traditional lines between public and private transportation. 
-
-Municipal leaders worldwide are implementing low-emission zones, congestion pricing schemes, and pedestrian-only 
-
-downtown districts to curb private vehicle dependency. Ultimately, the future of urban transit relies on data-
-
-driven optimization and sustainable engineering to ensure cities remain livable, economically vibrant, and 
-
-environmentally resilient for future generations.`,
+                text: `Urban transportation has undergone massive transformations over the past two centuries. At the dawn of the industrial revolution, cities expanded outward as steam-powered trains and horse-drawn omnibuses allowed workers to commute from suburban enclaves into dense industrial cores. By the late 19th century, electric streetcars revolutionized cityscapes, offering cleaner, faster, and more reliable transit options than their animal-powered predecessors. These infrastructural leaps not only shaped urban geography but also dictated economic stratification, as residential property values surged along established transit corridors.<br><br>
+                Entering the 20th century, the widespread adoption of the internal combustion engine shifted the paradigm toward private automobile ownership. City planners began designing sprawling highway systems, multi-lane parkways, and expansive parking lots, often at the expense of historical neighborhoods and pedestrian pathways. While automobiles granted unprecedented personal mobility and stimulated suburbanization on an unprecedented scale, they simultaneously introduced severe systemic challenges: chronic traffic congestion, elevated carbon emissions, and escalating rates of traffic-related fatalities. Consequently, contemporary urban centers face the complex challenge of retrofitting their transit grids.<br><br>
+                Today, 21st-century mobility strategies prioritize multi-modal ecosystems that integrate electric buses, high-capacity light rail networks, and protected bicycle infrastructure. Moreover, ride-sharing platforms and autonomous vehicle pilots are redefining the traditional lines between public and private transportation. Municipal leaders worldwide are implementing low-emission zones, congestion pricing schemes, and pedestrian-only downtown districts to curb private vehicle dependency. Ultimately, the future of urban transit relies on data-driven optimization and sustainable engineering to ensure cities remain livable, economically vibrant, and environmentally resilient for future generations.`,
                 questions: [
-                    { q: "What was the primary impact of steam-powered trains and horse-drawn omnibuses during the 
-
-industrial revolution?", options: ["A) They caused immediate traffic congestion in downtown cores.", "B) They 
-
-allowed workers to commute from suburbs into industrial cores.", "C) They completely replaced walking as the only 
-
-urban transit.", "D) They reduced residential property values near stations."], correct: 1 },
-                    { q: "How did electric streetcars compare to animal-powered transport in the late 19th 
-
-century?", options: ["A) They were slower and more expensive.", "B) They were cleaner, faster, and more reliable.", 
-
-"C) They caused more environmental pollution.", "D) They were restricted exclusively to freight transport."], 
-
-correct: 1 },
-                    { q: "What economic effect did early transit corridors have on real estate?", options: ["A) 
-
-Residential property values surged along the corridors.", "B) Property values dropped significantly due to noise.", 
-
-"C) Land ownership became completely decentralized.", "D) Real estate markets collapsed entirely."], correct: 0 },
-                    { q: "What technological invention shifted the 20th-century transportation paradigm?", options: 
-
-["A) The steam turbine engine", "B) The electric battery grid", "C) The internal combustion engine", "D) The 
-
-magnetic levitation rail"], correct: 2 },
-                    { q: "According to the text, what was often sacrificed to build expansive highway systems?", 
-
-options: ["A) Agricultural farmlands and forests", "B) Historical neighborhoods and pedestrian pathways", "C) 
-
-Industrial factories and warehouses", "D) Coastal ports and shipping lanes"], correct: 1 },
-                    { q: "What was one of the negative consequences of widespread automobile adoption?", options: 
-
-["A) Complete elimination of suburban living", "B) Chronic traffic congestion and high emissions", "C) Decreased 
-
-personal mobility for citizens", "D) Excessive reliance on horse-drawn carriages"], correct: 1 },
-                    { q: "What do 21st-century mobility strategies prioritize?", options: ["A) Exclusive multi-lane 
-
-highways for private cars", "B) Multi-modal ecosystems integrating electric transit and bikes", "C) Complete 
-
-abolition of public transportation networks", "D) Elimination of pedestrian walkways in city centers"], correct: 1 
-
-},
-                    { q: "What role are ride-sharing and autonomous vehicles playing in modern transit?", options: 
-
-["A) They are blurring the lines between public and private transport.", "B) They are failing to integrate with 
-
-municipal databases.", "C) They are exclusively used for rural freight delivery.", "D) They have completely 
-
-replaced light rail systems."], correct: 0 },
-                    { q: "What specific municipal measures are being implemented to curb private vehicle 
-
-dependency?", options: ["A) Free gasoline distribution for all citizens", "B) Low-emission zones and congestion 
-
-pricing schemes", "C) Mandatory removal of all bicycle lanes", "D) Elimination of public transit subsidies"], 
-
-correct: 1 },
-                    { q: "What is highlighted as essential for the future of urban transit?", options: ["A) Data-
-
-driven optimization and sustainable engineering", "B) Unlimited expansion of suburban parking lots", "C) Returning 
-
-to horse-omnibuses for zero emissions", "D) Privatizing all roads under single corporate entities"], correct: 0 }
+                    { q: "What was the primary impact of steam-powered trains and horse-drawn omnibuses during the industrial revolution?", options: ["A) They caused immediate traffic congestion in downtown cores.", "B) They allowed workers to commute from suburbs into industrial cores.", "C) They completely replaced walking as the only urban transit.", "D) They reduced residential property values near stations."], correct: 1 },
+                    { q: "How did electric streetcars compare to animal-powered transport in the late 19th century?", options: ["A) They were slower and more expensive.", "B) They were cleaner, faster, and more reliable.", "C) They caused more environmental pollution.", "D) They were restricted exclusively to freight transport."], correct: 1 },
+                    { q: "What economic effect did early transit corridors have on real estate?", options: ["A) Residential property values surged along the corridors.", "B) Property values dropped significantly due to noise.", "C) Land ownership became completely decentralized.", "D) Real estate markets collapsed entirely."], correct: 0 },
+                    { q: "What technological invention shifted the 20th-century transportation paradigm?", options: ["A) The steam turbine engine", "B) The electric battery grid", "C) The internal combustion engine", "D) The magnetic levitation rail"], correct: 2 },
+                    { q: "According to the text, what was often sacrificed to build expansive highway systems?", options: ["A) Agricultural farmlands and forests", "B) Historical neighborhoods and pedestrian pathways", "C) Industrial factories and warehouses", "D) Coastal ports and shipping lanes"], correct: 1 },
+                    { q: "What was one of the negative consequences of widespread automobile adoption?", options: ["A) Complete elimination of suburban living", "B) Chronic traffic congestion and high emissions", "C) Decreased personal mobility for citizens", "D) Excessive reliance on horse-drawn carriages"], correct: 1 },
+                    { q: "What do 21st-century mobility strategies prioritize?", options: ["A) Exclusive multi-lane highways for private cars", "B) Multi-modal ecosystems integrating electric transit and bikes", "C) Complete abolition of public transportation networks", "D) Elimination of pedestrian walkways in city centers"], correct: 1 },
+                    { q: "What role are ride-sharing and autonomous vehicles playing in modern transit?", options: ["A) They are blurring the lines between public and private transport.", "B) They are failing to integrate with municipal databases.", "C) They are exclusively used for rural freight delivery.", "D) They have completely replaced light rail systems."], correct: 0 },
+                    { q: "What specific municipal measures are being implemented to curb private vehicle dependency?", options: ["A) Free gasoline distribution for all citizens", "B) Low-emission zones and congestion pricing schemes", "C) Mandatory removal of all bicycle lanes", "D) Elimination of public transit subsidies"], correct: 1 },
+                    { q: "What is highlighted as essential for the future of urban transit?", options: ["A) Data-driven optimization and sustainable engineering", "B) Unlimited expansion of suburban parking lots", "C) Returning to horse-omnibuses for zero emissions", "D) Privatizing all roads under single corporate entities"], correct: 0 }
                 ]
             },
             {
                 title: "Passage 2: The Neuroscience of Sleep and Memory Consolidation",
-                text: `Sleep is not merely a passive state of physical rest, but an intensely active neurological 
-
-process crucial for cognitive maintenance, metabolic regulation, and emotional resilience. Neuroscientists have 
-
-established that sleep is divided into distinct cyclical stages, alternating between Non-Rapid Eye Movement (NREM) 
-
-sleep—which features deep delta-wave activity—and Rapid Eye Movement (REM) sleep, characterized by heightened brain 
-
-activity and vivid dreaming. Each stage serves specialized restorative and organizational functions for the human 
-
-brain.<br><br>
-                During slow-wave NREM sleep, the brain undergoes memory consolidation, a vital process whereby 
-
-fragile short-term memories acquired throughout the day are systematically transferred from the hippocampus to the 
-
-neocortex for long-term storage. Neurobiologists refer to this as 'systems consolidation.' During this phase, 
-
-neural replay occurs, firing neurons in identical sequences as when the original experiences took place. 
-
-Simultaneously, the brain's glymphatic system—a waste clearance pathway—activates dramatically, flushing out 
-
-neurotoxic metabolic byproducts such as beta-amyloid proteins that accumulate during waking hours.<br><br>
-                Conversely, REM sleep predominates during the latter half of the nocturnal cycle and plays a 
-
-fundamental role in emotional regulation, creative problem-solving, and associative learning. During REM, the brain 
-
-integrates novel information with pre-existing knowledge schemas, helping individuals forge abstract connections 
-
-and process traumatic or emotionally charged experiences. Chronic sleep deprivation disrupts both NREM and REM 
-
-cycles, leading to cognitive deficits, impaired decision-making, weakened immune response, and long-term 
-
-neurodegenerative risks. Prioritizing consistent, high-quality sleep is therefore an absolute biological necessity 
-
-rather than a negotiable lifestyle preference.`,
+                text: `Sleep is not merely a passive state of physical rest, but an intensely active neurological process crucial for cognitive maintenance, metabolic regulation, and emotional resilience. Neuroscientists have established that sleep is divided into distinct cyclical stages, alternating between Non-Rapid Eye Movement (NREM) sleep—which features deep delta-wave activity—and Rapid Eye Movement (REM) sleep, characterized by heightened brain activity and vivid dreaming. Each stage serves specialized restorative and organizational functions for the human brain.<br><br>
+                During slow-wave NREM sleep, the brain undergoes memory consolidation, a vital process whereby fragile short-term memories acquired throughout the day are systematically transferred from the hippocampus to the neocortex for long-term storage. Neurobiologists refer to this as 'systems consolidation.' During this phase, neural replay occurs, firing neurons in identical sequences as when the original experiences took place. Simultaneously, the brain's glymphatic system—a waste clearance pathway—activates dramatically, flushing out neurotoxic metabolic byproducts such as beta-amyloid proteins that accumulate during waking hours.<br><br>
+                Conversely, REM sleep predominates during the latter half of the nocturnal cycle and plays a fundamental role in emotional regulation, creative problem-solving, and associative learning. During REM, the brain integrates novel information with pre-existing knowledge schemas, helping individuals forge abstract connections and process traumatic or emotionally charged experiences. Chronic sleep deprivation disrupts both NREM and REM cycles, leading to cognitive deficits, impaired decision-making, weakened immune response, and long-term neurodegenerative risks. Prioritizing consistent, high-quality sleep is therefore an absolute biological necessity rather than a negotiable lifestyle preference.`,
                 questions: [
-                    { q: "How is sleep described in the opening sentence?", options: ["A) A purely passive state of 
-
-physical recovery", "B) An active neurological process crucial for cognition", "C) An optional metabolic pause for 
-
-the body", "D) A temporary cessation of brain activity"], correct: 1 },
-                    { q: "What distinguishes NREM sleep according to the text?", options: ["A) Vivid dreaming and 
-
-rapid eye movements", "B) Deep delta-wave activity", "C) Complete electrical silence in the cortex", "D) Heightened 
-
-emotional processing"], correct: 1 },
-                    { q: "What occurs during slow-wave NREM sleep regarding memory?", options: ["A) Memories are 
-
-permanently erased to clear capacity.", "B) Fragile short-term memories are transferred for long-term storage.", 
-
-"C) Emotional memories are amplified without filtering.", "D) The hippocampus stops functioning entirely."], 
-
-correct: 1 },
-                    { q: "What term do neurobiologists use for the transfer of memories from the hippocampus to the 
-
-neocortex?", options: ["A) Synaptic pruning", "B) Neural replay", "C) Systems consolidation", "D) Glymphatic 
-
-clearance"], correct: 2 },
-                    { q: "What is the function of the brain's glymphatic system during deep sleep?", options: ["A) 
-
-To generate new neurons in the hippocampus", "B) To flush out neurotoxic metabolic byproducts like beta-amyloid", 
-
-"C) To regulate core body temperature", "D) To transmit electrical signals across synapses"], correct: 1 },
-                    { q: "When does REM sleep predominantly occur during the night?", options: ["A) During the 
-
-first hour of sleep", "B) In the middle portion before deep sleep", "C) During the latter half of the nocturnal 
-
-cycle", "D) Evenly distributed across all hours"], correct: 2 },
-                    { q: "What cognitive functions are specifically supported by REM sleep?", options: ["A) 
-
-Emotional regulation and creative problem-solving", "B) Motor skill repetition and muscle memory", "C) Immediate 
-
-sensory reflex reactions", "D) Long-term factual data retrieval"], correct: 0 },
-                    { q: "How does the brain process novel information during REM sleep?", options: ["A) It 
-
-isolates new facts without connecting them.", "B) It integrates novel information with pre-existing knowledge 
-
-schemas.", "C) It deletes contradictory information immediately.", "D) It stores them exclusively in the 
-
-brainstem."], correct: 1 },
-                    { q: "What are consequences of chronic sleep deprivation?", options: ["A) Enhanced cognitive 
-
-speed and stronger immunity", "B) Cognitive deficits, impaired decision-making, and weak immunity", "C) Improved 
-
-emotional resilience", "D) Increased glymphatic clearance efficiency"], correct: 1 },
-                    { q: "What is the ultimate conclusion regarding sleep in the passage?", options: ["A) It is a 
-
-negotiable lifestyle preference.", "B) It is an absolute biological necessity.", "C) It can be entirely replaced by 
-
-meditation.", "D) It is only required during developmental growth years."], correct: 1 }
+                    { q: "How is sleep described in the opening sentence?", options: ["A) A purely passive state of physical recovery", "B) An active neurological process crucial for cognition", "C) An optional metabolic pause for the body", "D) A temporary cessation of brain activity"], correct: 1 },
+                    { q: "What distinguishes NREM sleep according to the text?", options: ["A) Vivid dreaming and rapid eye movements", "B) Deep delta-wave activity", "C) Complete electrical silence in the cortex", "D) Heightened emotional processing"], correct: 1 },
+                    { q: "What occurs during slow-wave NREM sleep regarding memory?", options: ["A) Memories are permanently erased to clear capacity.", "B) Fragile short-term memories are transferred for long-term storage.", "C) Emotional memories are amplified without filtering.", "D) The hippocampus stops functioning entirely."], correct: 1 },
+                    { q: "What term do neurobiologists use for the transfer of memories from the hippocampus to the neocortex?", options: ["A) Synaptic pruning", "B) Neural replay", "C) Systems consolidation", "D) Glymphatic clearance"], correct: 2 },
+                    { q: "What is the function of the brain's glymphatic system during deep sleep?", options: ["A) To generate new neurons in the hippocampus", "B) To flush out neurotoxic metabolic byproducts like beta-amyloid", "C) To regulate core body temperature", "D) To transmit electrical signals across synapses"], correct: 1 },
+                    { q: "When does REM sleep predominantly occur during the night?", options: ["A) During the first hour of sleep", "B) In the middle portion before deep sleep", "C) During the latter half of the nocturnal cycle", "D) Evenly distributed across all hours"], correct: 2 },
+                    { q: "What cognitive functions are specifically supported by REM sleep?", options: ["A) Emotional regulation and creative problem-solving", "B) Motor skill repetition and muscle memory", "C) Immediate sensory reflex reactions", "D) Long-term factual data retrieval"], correct: 0 },
+                    { q: "How does the brain process novel information during REM sleep?", options: ["A) It isolates new facts without connecting them.", "B) It integrates novel information with pre-existing knowledge schemas.", "C) It deletes contradictory information immediately.", "D) It stores them exclusively in the brainstem."], correct: 1 },
+                    { q: "What are consequences of chronic sleep deprivation?", options: ["A) Enhanced cognitive speed and stronger immunity", "B) Cognitive deficits, impaired decision-making, and weak immunity", "C) Improved emotional resilience", "D) Increased glymphatic clearance efficiency"], correct: 1 },
+                    { q: "What is the ultimate conclusion regarding sleep in the passage?", options: ["A) It is a negotiable lifestyle preference.", "B) It is an absolute biological necessity.", "C) It can be entirely replaced by meditation.", "D) It is only required during developmental growth years."], correct: 1 }
                 ]
             },
             {
                 title: "Passage 3: The Economic and Environmental Dynamics of Renewable Energy",
-                text: `The global transition from fossil fuels to renewable energy sources—primarily solar 
-
-photovoltaic, wind turbine farms, and geothermal installations—represents one of the most critical structural 
-
-shifts in modern economic history. For decades, green energy was hindered by prohibitive capital costs and low 
-
-energy conversion efficiencies. However, aggressive technological innovations, economies of scale in manufacturing, 
-
-and supportive regulatory frameworks have driven the levelized cost of electricity (LCOE) for solar and wind down 
-
-by over 70% in the past fifteen years, making renewables cheaper than coal and natural gas in most major 
-
-markets.<br><br>
-                Despite these remarkable economic gains, integrating intermittent renewable sources into legacy 
-
-electrical grids introduces formidable engineering hurdles. Unlike fossil fuel or nuclear power plants, which 
-
-provide steady, dispatchable baseline power, wind and solar generation fluctuate unpredictably based on weather 
-
-patterns, cloud cover, and diurnal cycles. To maintain grid stability and prevent blackouts, utility operators must 
-
-deploy advanced battery energy storage systems (BESS), implement smart grid management software, and expand high-
-
-voltage direct current (HVDC) transmission lines capable of moving surplus energy across vast geographic 
-
-regions.<br><br>
-                Furthermore, the renewable transition carries its own environmental trade-offs that demand rigorous 
-
-lifecycle management. The large-scale manufacturing of lithium-ion batteries and solar panels requires intensive 
-
-extraction of critical minerals such as lithium, cobalt, nickel, and rare earth elements. Mining these materials 
-
-can lead to local habitat destruction, water contamination, and severe labor rights challenges if left unregulated. 
-
-Consequently, industry leaders and policymakers are heavily investing in recycling technologies, circular economy 
-
-frameworks, and alternative chemistries (such as sodium-ion batteries) to ensure that green energy remains 
-
-genuinely sustainable from extraction to decommissioning.`,
+                text: `The global transition from fossil fuels to renewable energy sources—primarily solar photovoltaic, wind turbine farms, and geothermal installations—represents one of the most critical structural shifts in modern economic history. For decades, green energy was hindered by prohibitive capital costs and low energy conversion efficiencies. However, aggressive technological innovations, economies of scale in manufacturing, and supportive regulatory frameworks have driven the levelized cost of electricity (LCOE) for solar and wind down by over 70% in the past fifteen years, making renewables cheaper than coal and natural gas in most major markets.<br><br>
+                Despite these remarkable economic gains, integrating intermittent renewable sources into legacy electrical grids introduces formidable engineering hurdles. Unlike fossil fuel or nuclear power plants, which provide steady, dispatchable baseline power, wind and solar generation fluctuate unpredictably based on weather patterns, cloud cover, and diurnal cycles. To maintain grid stability and prevent blackouts, utility operators must deploy advanced battery energy storage systems (BESS), implement smart grid management software, and expand high-voltage direct current (HVDC) transmission lines capable of moving surplus energy across vast geographic regions.<br><br>
+                Furthermore, the renewable transition carries its own environmental trade-offs that demand rigorous lifecycle management. The large-scale manufacturing of lithium-ion batteries and solar panels requires intensive extraction of critical minerals such as lithium, cobalt, nickel, and rare earth elements. Mining these materials can lead to local habitat destruction, water contamination, and severe labor rights challenges if left unregulated. Consequently, industry leaders and policymakers are heavily investing in recycling technologies, circular economy frameworks, and alternative chemistries (such as sodium-ion batteries) to ensure that green energy remains genuinely sustainable from extraction to decommissioning.`,
                 questions: [
-                    { q: "What does the global transition to renewable energy represent?", options: ["A) A 
-
-temporary political trend in developing nations", "B) One of the most critical structural shifts in modern economic 
-
-history", "C) An unfeasible economic experiment", "D) A localized shift with no global impact"], correct: 1 },
-                    { q: "What historically hindered the adoption of green energy?", options: ["A) Excessive public 
-
-demand for coal", "B) Prohibitive capital costs and low conversion efficiencies", "C) Lack of sunlight and wind 
-
-globally", "D) Strict government bans on solar panels"], correct: 1 },
-                    { q: "By how much has the levelized cost of electricity (LCOE) for solar and wind dropped in 
-
-the past fifteen years?", options: ["A) By roughly 15%", "B) By nearly 30%", "C) By over 70%", "D) By exactly 
-
-100%"], correct: 2 },
-                    { q: "What is the primary engineering hurdle of renewable energy sources?", options: ["A) Their 
-
-excessive carbon footprint", "B) Their intermittent and unpredictable generation", "C) Their inability to connect 
-
-to standard electrical outlets", "D) Their requirement for nuclear fuel inputs"], correct: 1 },
-                    { q: "How do fossil fuel and nuclear plants differ from wind and solar?", options: ["A) They 
-
-provide steady, dispatchable baseline power.", "B) They produce zero waste of any kind.", "C) They cost nothing to 
-
-maintain.", "D) They operate independently of weather."], correct: 0 },
-                    { q: "What technological solutions are deployed to maintain grid stability?", options: ["A) 
-
-Diesel generators in every household", "B) Advanced battery storage (BESS) and smart grid software", "C) Manual 
-
-switches operated by utility workers", "D) Reducing total electricity consumption by half"], correct: 1 },
-                    { q: "What is an environmental challenge associated with renewable manufacturing?", options: 
-
-["A) Massive greenhouse gas emissions during turbine operation", "B) Intensive extraction of critical minerals like 
-
-lithium and cobalt", "C) Permanent radioactive contamination of soil", "D) Depletion of global atmospheric 
-
-oxygen"], correct: 1 },
-                    { q: "What negative impacts can mining critical minerals cause if unregulated?", options: ["A) 
-
-Habitat destruction, water contamination, and labor challenges", "B) Global cooling and ice age conditions", "C) 
-
-Increased earthquake frequency", "D) Complete depletion of Earth's crust"], correct: 0 },
-                    { q: "What solutions are industry leaders investing in to address material scarcity?", options: 
-
-["A) Halting all green energy projects", "B) Recycling technologies and circular economy frameworks", "C) Relying 
-
-exclusively on fossil fuel backups", "D) Burning solar panels after single use"], correct: 1 },
-                    { q: "What alternative battery chemistry is mentioned in the text?", options: ["A) Lead-acid 
-
-batteries", "B) Sodium-ion batteries", "C) Hydrogen-fuel cells", "D) Zinc-air batteries"], correct: 1 }
+                    { q: "What does the global transition to renewable energy represent?", options: ["A) A temporary political trend in developing nations", "B) One of the most critical structural shifts in modern economic history", "C) An unfeasible economic experiment", "D) A localized shift with no global impact"], correct: 1 },
+                    { q: "What historically hindered the adoption of green energy?", options: ["A) Excessive public demand for coal", "B) Prohibitive capital costs and low conversion efficiencies", "C) Lack of sunlight and wind globally", "D) Strict government bans on solar panels"], correct: 1 },
+                    { q: "By how much has the levelized cost of electricity (LCOE) for solar and wind dropped in the past fifteen years?", options: ["A) By roughly 15%", "B) By nearly 30%", "C) By over 70%", "D) By exactly 100%"], correct: 2 },
+                    { q: "What is the primary engineering hurdle of renewable energy sources?", options: ["A) Their excessive carbon footprint", "B) Their intermittent and unpredictable generation", "C) Their inability to connect to standard electrical outlets", "D) Their requirement for nuclear fuel inputs"], correct: 1 },
+                    { q: "How do fossil fuel and nuclear plants differ from wind and solar?", options: ["A) They provide steady, dispatchable baseline power.", "B) They produce zero waste of any kind.", "C) They cost nothing to maintain.", "D) They operate independently of weather."], correct: 0 },
+                    { q: "What technological solutions are deployed to maintain grid stability?", options: ["A) Diesel generators in every household", "B) Advanced battery storage (BESS) and smart grid software", "C) Manual switches operated by utility workers", "D) Reducing total electricity consumption by half"], correct: 1 },
+                    { q: "What is an environmental challenge associated with renewable manufacturing?", options: ["A) Massive greenhouse gas emissions during turbine operation", "B) Intensive extraction of critical minerals like lithium and cobalt", "C) Permanent radioactive contamination of soil", "D) Depletion of global atmospheric oxygen"], correct: 1 },
+                    { q: "What negative impacts can mining critical minerals cause if unregulated?", options: ["A) Habitat destruction, water contamination, and labor challenges", "B) Global cooling and ice age conditions", "C) Increased earthquake frequency", "D) Complete depletion of Earth's crust"], correct: 0 },
+                    { q: "What solutions are industry leaders investing in to address material scarcity?", options: ["A) Halting all green energy projects", "B) Recycling technologies and circular economy frameworks", "C) Relying exclusively on fossil fuel backups", "D) Burning solar panels after single use"], correct: 1 },
+                    { q: "What alternative battery chemistry is mentioned in the text?", options: ["A) Lead-acid batteries", "B) Sodium-ion batteries", "C) Hydrogen-fuel cells", "D) Zinc-air batteries"], correct: 1 }
                 ]
             },
             {
                 title: "Passage 4: Artificial Intelligence and the Transformation of Global Labor Markets",
-                text: `The rapid ascent of generative artificial intelligence (AI) and machine learning algorithms 
-
-is instigating a profound realignment of global labor markets, comparable in magnitude to the mechanization of 
-
-agriculture during the industrial revolution. While earlier waves of automation primarily targeted routine, manual 
-
-labor—such as assembly-line manufacturing and data entry—contemporary AI models are increasingly capable of 
-
-performing cognitive, analytical, and creative tasks once thought uniquely human. From drafting complex legal 
-
-contracts and writing computer code to composing musical scores and diagnosing medical imaging, AI systems 
-
-demonstrate remarkable proficiency across diverse professional domains.<br><br>
-                This technological paradigm shift has sparked intense debate among economists, sociologists, and 
-
-policymakers regarding net employment outcomes and wage inequality. Pessimistic forecasters warn of widespread 
-
-technological unemployment, arguing that intelligent agents will displace millions of white-collar workers in 
-
-sectors like finance, customer service, administration, and education without creating commensurate new jobs. 
-
-Conversely, optimistic analysts contend that AI will function as a powerful productivity multiplier rather than a 
-
-total substitute. In this view, artificial intelligence will absorb tedious administrative friction, empowering 
-
-workers to focus on higher-order strategic thinking, interpersonal empathy, and complex problem-solving.<br><br>
-                Navigating this transition successfully requires a fundamental overhaul of national education 
-
-systems and workforce development programs. Traditional educational models that emphasize rote memorization and 
-
-static knowledge acquisition are becoming obsolete in an era where AI can retrieve and synthesize information 
-
-instantaneously. Instead, modern curricula must cultivate lifelong learning agility, digital literacy, critical 
-
-evaluation, and emotional intelligence. Furthermore, governments and institutions are actively exploring policy 
-
-instruments such as universal basic support, robust retraining subsidies, and ethical regulatory frameworks to 
-
-ensure that the economic dividends of artificial intelligence are distributed equitably across society rather than 
-
-concentrated among a tiny technological elite.`,
+                text: `The rapid ascent of generative artificial intelligence (AI) and machine learning algorithms is instigating a profound realignment of global labor markets, comparable in magnitude to the mechanization of agriculture during the industrial revolution. While earlier waves of automation primarily targeted routine, manual labor—such as assembly-line manufacturing and data entry—contemporary AI models are increasingly capable of performing cognitive, analytical, and creative tasks once thought uniquely human. From drafting complex legal contracts and writing computer code to composing musical scores and diagnosing medical imaging, AI systems demonstrate remarkable proficiency across diverse professional domains.<br><br>
+                This technological paradigm shift has sparked intense debate among economists, sociologists, and policymakers regarding net employment outcomes and wage inequality. Pessimistic forecasters warn of widespread technological unemployment, arguing that intelligent agents will displace millions of white-collar workers in sectors like finance, customer service, administration, and education without creating commensurate new jobs. Conversely, optimistic analysts contend that AI will function as a powerful productivity multiplier rather than a total substitute. In this view, artificial intelligence will absorb tedious administrative friction, empowering workers to focus on higher-order strategic thinking, interpersonal empathy, and complex problem-solving.<br><br>
+                Navigating this transition successfully requires a fundamental overhaul of national education systems and workforce development programs. Traditional educational models that emphasize rote memorization and static knowledge acquisition are becoming obsolete in an era where AI can retrieve and synthesize information instantaneously. Instead, modern curricula must cultivate lifelong learning agility, digital literacy, critical evaluation, and emotional intelligence. Furthermore, governments and institutions are actively exploring policy instruments such as universal basic support, robust retraining subsidies, and ethical regulatory frameworks to ensure that the economic dividends of artificial intelligence are distributed equitably across society rather than concentrated among a tiny technological elite.`,
                 questions: [
-                    { q: "What historical event is AI's impact compared to in the text?", options: ["A) The 
-
-invention of the printing press", "B) The mechanization of agriculture during the industrial revolution", "C) The 
-
-discovery of electricity", "D) The construction of the transcontinental railroad"], correct: 1 },
-                    { q: "How do contemporary AI models differ from earlier waves of automation?", options: ["A) 
-
-They only affect manual factory labor.", "B) They perform cognitive, analytical, and creative tasks.", "C) They 
-
-operate entirely offline without electricity.", "D) They require human intervention for every calculation."], 
-
-correct: 1 },
-                    { q: "Which of the following tasks can modern AI systems perform?", options: ["A) Drafting 
-
-legal contracts and diagnosing medical imaging", "B) Operating heavy construction machinery physically", "C) 
-
-Growing organic crops in greenhouses", "D) Constructing physical bridge infrastructure"], correct: 0 },
-                    { q: "What major debate has this technological shift sparked among experts?", options: ["A) 
-
-Whether AI should be granted legal citizenship", "B) Net employment outcomes and wage inequality", "C) The physical 
-
-safety of server cooling systems", "D) The elimination of electricity standards"], correct: 1 },
-                    { q: "What do pessimistic forecasters predict about AI in the labor market?", options: ["A) 
-
-Universal prosperity and zero work hours", "B) Widespread technological unemployment for white-collar workers", "C) 
-
-A complete return to agricultural labor", "D) Equal distribution of wealth worldwide"], correct: 1 },
-                    { q: "How do optimistic analysts view the role of AI?", options: ["A) As a total substitute for 
-
-human thought", "B) As a powerful productivity multiplier", "C) As a temporary fad that will soon disappear", "D) 
-
-As an exclusively recreational tool"], correct: 1 },
-                    { q: "What will workers be able to focus on as AI absorbs administrative friction?", options: 
-
-["A) Strategic thinking, empathy, and complex problem-solving", "B) Manual data entry and file sorting", "C) 
-
-Repetitive calculation and memorization", "D) Eliminating all computer systems"], correct: 0 },
-                    { q: "Why are traditional educational models becoming obsolete?", options: ["A) Because schools 
-
-are closing globally.", "B) Because AI can retrieve and synthesize information instantaneously.", "C) Because 
-
-students refuse to attend classes.", "D) Because books are no longer printed."], correct: 1 },
-                    { q: "What skills must modern curricula cultivate instead of rote memorization?", options: ["A) 
-
-Typing speed and shorthand writing", "B) Lifelong learning agility, digital literacy, and critical thinking", "C) 
-
-Physical endurance and manual dexterity", "D) Industrial machinery repair"], correct: 1 },
-                    { q: "What policy instruments are governments exploring to ensure equitable outcomes?", 
-
-options: ["A) Banning all computer science research", "B) Retraining subsidies and ethical regulatory frameworks", 
-
-"C) Taxing artificial intelligence users heavily", "D) Restricting internet access to corporations"], correct: 1 }
+                    { q: "What historical event is AI's impact compared to in the text?", options: ["A) The invention of the printing press", "B) The mechanization of agriculture during the industrial revolution", "C) The discovery of electricity", "D) The construction of the transcontinental railroad"], correct: 1 },
+                    { q: "How do contemporary AI models differ from earlier waves of automation?", options: ["A) They only affect manual factory labor.", "B) They perform cognitive, analytical, and creative tasks.", "C) They operate entirely offline without electricity.", "D) They require human intervention for every calculation."], correct: 1 },
+                    { q: "Which of the following tasks can modern AI systems perform?", options: ["A) Drafting legal contracts and diagnosing medical imaging", "B) Operating heavy construction machinery physically", "C) Growing organic crops in greenhouses", "D) Constructing physical bridge infrastructure"], correct: 0 },
+                    { q: "What major debate has this technological shift sparked among experts?", options: ["A) Whether AI should be granted legal citizenship", "B) Net employment outcomes and wage inequality", "C) The physical safety of server cooling systems", "D) The elimination of electricity standards"], correct: 1 },
+                    { q: "What do pessimistic forecasters predict about AI in the labor market?", options: ["A) Universal prosperity and zero work hours", "B) Widespread technological unemployment for white-collar workers", "C) A complete return to agricultural labor", "D) Equal distribution of wealth worldwide"], correct: 1 },
+                    { q: "How do optimistic analysts view the role of AI?", options: ["A) As a total substitute for human thought", "B) As a powerful productivity multiplier", "C) As a temporary fad that will soon disappear", "D) As an exclusively recreational tool"], correct: 1 },
+                    { q: "What will workers be able to focus on as AI absorbs administrative friction?", options: ["A) Strategic thinking, empathy, and complex problem-solving", "B) Manual data entry and file sorting", "C) Repetitive calculation and memorization", "D) Eliminating all computer systems"], correct: 0 },
+                    { q: "Why are traditional educational models becoming obsolete?", options: ["A) Because schools are closing globally.", "B) Because AI can retrieve and synthesize information instantaneously.", "C) Because students refuse to attend classes.", "D) Because books are no longer printed."], correct: 1 },
+                    { q: "What skills must modern curricula cultivate instead of rote memorization?", options: ["A) Typing speed and shorthand writing", "B) Lifelong learning agility, digital literacy, and critical thinking", "C) Physical endurance and manual dexterity", "D) Industrial machinery repair"], correct: 1 },
+                    { q: "What policy instruments are governments exploring to ensure equitable outcomes?", options: ["A) Banning all computer science research", "B) Retraining subsidies and ethical regulatory frameworks", "C) Taxing artificial intelligence users heavily", "D) Restricting internet access to corporations"], correct: 1 }
                 ]
             },
             {
                 title: "Passage 5: Behavioral Economics and Human Decision-Making",
-                text: `For decades, classical economic theory rested on the foundational assumption of 'Homo 
-
-economicus'—a rational actor model positing that human beings invariably process information logically, weigh costs 
-
-and benefits objectively, and make choices to maximize personal utility and financial welfare. However, 
-
-groundbreaking research in behavioral economics by pioneers like Daniel Kahneman and Amos Tversky shattered this 
-
-idealized paradigm. Their empirical findings revealed that human decision-making is systematically flawed, heavily 
-
-influenced by cognitive biases, emotional heuristics, and environmental framing effects.<br><br>
-                One of the most robust discoveries in behavioral economics is 'loss aversion,' which demonstrates 
-
-that the psychological pain of losing an asset is roughly twice as intense as the psychological pleasure of gaining 
-
-an equivalent item. This asymmetry explains why individuals often exhibit extreme risk aversion in financial 
-
-investments when facing potential losses, yet paradoxically take irrational gambles to avoid locking in a 
-
-guaranteed loss. Another prevalent bias is the 'status quo bias,' wherein people disproportionately prefer things 
-
-to remain the same by doing nothing, frequently defaulting to pre-set options regardless of whether better 
-
-alternatives exist.<br><br>
-                Understanding these cognitive shortcuts has revolutionized public policy, corporate marketing, and 
-
-institutional design through the application of 'nudging.' Popularized by economist Richard Thaler, a nudge is any 
-
-aspect of choice architecture that alters people's behavior in a predictable way without forbidding any options or 
-
-significantly changing their economic incentives. Examples include automatically enrolling employees in retirement 
-
-savings plans or placing healthy food at eye level in cafeterias while obscuring sugary snacks. By designing 
-
-environments that align with our natural psychological inclinations, policymakers can guide citizens toward 
-
-healthier financial, medical, and environmental decisions without resorting to authoritarian mandates.`,
+                text: `For decades, classical economic theory rested on the foundational assumption of 'Homo economicus'—a rational actor model positing that human beings invariably process information logically, weigh costs and benefits objectively, and make choices to maximize personal utility and financial welfare. However, groundbreaking research in behavioral economics by pioneers like Daniel Kahneman and Amos Tversky shattered this idealized paradigm. Their empirical findings revealed that human decision-making is systematically flawed, heavily influenced by cognitive biases, emotional heuristics, and environmental framing effects.<br><br>
+                One of the most robust discoveries in behavioral economics is 'loss aversion,' which demonstrates that the psychological pain of losing an asset is roughly twice as intense as the psychological pleasure of gaining an equivalent item. This asymmetry explains why individuals often exhibit extreme risk aversion in financial investments when facing potential losses, yet paradoxically take irrational gambles to avoid locking in a guaranteed loss. Another prevalent bias is the 'status quo bias,' wherein people disproportionately prefer things to remain the same by doing nothing, frequently defaulting to pre-set options regardless of whether better alternatives exist.<br><br>
+                Understanding these cognitive shortcuts has revolutionized public policy, corporate marketing, and institutional design through the application of 'nudging.' Popularized by economist Richard Thaler, a nudge is any aspect of choice architecture that alters people's behavior in a predictable way without forbidding any options or significantly changing their economic incentives. Examples include automatically enrolling employees in retirement savings plans or placing healthy food at eye level in cafeterias while obscuring sugary snacks. By designing environments that align with our natural psychological inclinations, policymakers can guide citizens toward healthier financial, medical, and environmental decisions without resorting to authoritarian mandates.`,
                 questions: [
-                    { q: "What is the foundational assumption of classical economic theory?", options: ["A) Humans 
-
-act purely out of emotional impulse.", "B) Humans are rational actors who maximize personal utility.", "C) Economic 
-
-choices are entirely random.", "D) Financial markets operate independently of human behavior."], correct: 1 },
-                    { q: "Who pioneered groundbreaking research that challenged the rational actor model?", 
-
-options: ["A) Adam Smith and David Ricardo", "B) Daniel Kahneman and Amos Tversky", "C) Richard Thaler and John 
-
-Maynard Keynes", "D) Milton Friedman and Friedrich Hayek"], correct: 1 },
-                    { q: "According to behavioral economics, what influences human decision-making?", options: ["A) 
-
-Pure mathematical calculation", "B) Cognitive biases, emotional heuristics, and framing effects", "C) Strict 
-
-adherence to legal contracts", "D) Algorithmic optimization"], correct: 1 },
-                    { q: "What does 'loss aversion' mean?", options: ["A) People enjoy losing money for tax 
-
-purposes.", "B) The pain of losing is about twice as intense as the pleasure of gaining.", "C) Individuals never 
-
-take financial risks under any condition.", "D) Losses are forgotten faster than gains."], correct: 1 },
-                    { q: "How do individuals behave when facing potential financial losses according to loss 
-
-aversion?", options: ["A) They exhibit extreme risk aversion or take irrational gambles to avoid loss.", "B) They 
-
-remain completely indifferent to financial outcomes.", "C) They always liquidate assets immediately.", "D) They 
-
-consult algorithms for rational advice."], correct: 0 },
-                    { q: "What is the 'status quo bias'?", options: ["A) A strong desire to change jobs 
-
-frequently", "B) The tendency to prefer things to remain the same by doing nothing", "C) An obsession with 
-
-political stability", "D) The preference for luxury goods over basic necessities"], correct: 1 },
-                    { q: "What has the understanding of cognitive shortcuts revolutionized?", options: ["A) 
-
-Military strategy and tactical defense", "B) Public policy, corporate marketing, and institutional design", "C) 
-
-Agricultural crop yields and irrigation", "D) Aerospace engineering and rocket design"], correct: 1 },
-                    { q: "What is a 'nudge' in the context of choice architecture?", options: ["A) A mandatory 
-
-government law carrying prison sentences", "B) An aspect of choice architecture altering behavior without 
-
-forbidding options", "C) A financial penalty for making poor choices", "D) A physical push toward an exit door"], 
-
-correct: 1 },
-                    { q: "Which of the following is an example of a nudge?", options: ["A) Imposing heavy taxes on 
-
-all food items", "B) Automatically enrolling employees in retirement savings plans", "C) Banning unhealthy snacks 
-
-completely by law", "D) Forcing citizens to vote on election days"], correct: 1 },
-                    { q: "What is the ultimate goal of designing environments using nudges?", options: ["A) To 
-
-trick consumers into buying unwanted luxury goods", "B) To guide citizens toward healthier decisions without 
-
-authoritarian mandates", "C) To eliminate all personal freedom of choice", "D) To maximize corporate tax 
-
-revenues"], correct: 1 }
+                    { q: "What is the foundational assumption of classical economic theory?", options: ["A) Humans act purely out of emotional impulse.", "B) Humans are rational actors who maximize personal utility.", "C) Economic choices are entirely random.", "D) Financial markets operate independently of human behavior."], correct: 1 },
+                    { q: "Who pioneered groundbreaking research that challenged the rational actor model?", options: ["A) Adam Smith and David Ricardo", "B) Daniel Kahneman and Amos Tversky", "C) Richard Thaler and John Maynard Keynes", "D) Milton Friedman and Friedrich Hayek"], correct: 1 },
+                    { q: "According to behavioral economics, what influences human decision-making?", options: ["A) Pure mathematical calculation", "B) Cognitive biases, emotional heuristics, and framing effects", "C) Strict adherence to legal contracts", "D) Algorithmic optimization"], correct: 1 },
+                    { q: "What does 'loss aversion' mean?", options: ["A) People enjoy losing money for tax purposes.", "B) The pain of losing is about twice as intense as the pleasure of gaining.", "C) Individuals never take financial risks under any condition.", "D) Losses are forgotten faster than gains."], correct: 1 },
+                    { q: "How do individuals behave when facing potential financial losses according to loss aversion?", options: ["A) They exhibit extreme risk aversion or take irrational gambles to avoid loss.", "B) They remain completely indifferent to financial outcomes.", "C) They always liquidate assets immediately.", "D) They consult algorithms for rational advice."], correct: 0 },
+                    { q: "What is the 'status quo bias'?", options: ["A) A strong desire to change jobs frequently", "B) The tendency to prefer things to remain the same by doing nothing", "C) An obsession with political stability", "D) The preference for luxury goods over basic necessities"], correct: 1 },
+                    { q: "What has the understanding of cognitive shortcuts revolutionized?", options: ["A) Military strategy and tactical defense", "B) Public policy, corporate marketing, and institutional design", "C) Agricultural crop yields and irrigation", "D) Aerospace engineering and rocket design"], correct: 1 },
+                    { q: "What is a 'nudge' in the context of choice architecture?", options: ["A) A mandatory government law carrying prison sentences", "B) An aspect of choice architecture altering behavior without forbidding options", "C) A financial penalty for making poor choices", "D) A physical push toward an exit door"], correct: 1 },
+                    { q: "Which of the following is an example of a nudge?", options: ["A) Imposing heavy taxes on all food items", "B) Automatically enrolling employees in retirement savings plans", "C) Banning unhealthy snacks completely by law", "D) Forcing citizens to vote on election days"], correct: 1 },
+                    { q: "What is the ultimate goal of designing environments using nudges?", options: ["A) To trick consumers into buying unwanted luxury goods", "B) To guide citizens toward healthier decisions without authoritarian mandates", "C) To eliminate all personal freedom of choice", "D) To maximize corporate tax revenues"], correct: 1 }
                 ]
             }
         ];
@@ -755,12 +333,9 @@ revenues"], correct: 1 }
 
         function loadPassageData() {
             const passage = readingData[currentPassageIndex];
-            document.getElementById('passage-text-container').innerHTML = `<h3>${passage.title}</h3><p>
-
-${passage.text}</p>`;
+            document.getElementById('passage-text-container').innerHTML = `<h3>${passage.title}</h3><p>${passage.text}</p>`;
             document.getElementById('passage-indicator').innerText = `Lectura ${currentPassageIndex + 1} de 5`;
             
-            // Actualizar botones de pasaje
             const buttons = document.querySelectorAll('.btn-passage');
             buttons.forEach((btn, idx) => {
                 if(idx === currentPassageIndex) btn.classList.add('active');
@@ -808,9 +383,7 @@ ${passage.text}</p>`;
                 currentQuestionIndex = 0;
                 loadPassageData();
             } else {
-                alert("¡Felicitaciones, mi hermano! Has completado las 5 lecturas y las 50 preguntas del simulador 
-
-de lectura iTEP con éxito.");
+                alert("¡Felicitaciones, mi hermano! Has completado las 5 lecturas y las 50 preguntas del simulador de lectura iTEP con éxito.");
             }
         }
 
@@ -833,12 +406,9 @@ de lectura iTEP con éxito.");
 
         function updateScoreDisplay() {
             let answeredCount = userAnswers[currentPassageIndex].filter(val => val !== null).length;
-            document.getElementById('score-display').innerText = `Respondidas en esta lectura: 
-
-${answeredCount}/10`;
+            document.getElementById('score-display').innerText = `Respondidas en esta lectura: ${answeredCount}/10`;
         }
 
-        // Inicializar al cargar
         window.onload = function() {
             loadPassageData();
         };
