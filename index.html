@@ -88,6 +88,45 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
         }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-top: 25px;
+        }
+        .module-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 22px;
+            border-radius: 12px;
+            color: var(--text-main);
+            text-align: left;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .module-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--itip-light-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+            background: #ffffff;
+        }
+        .module-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 17px;
+            color: var(--itip-blue);
+            font-weight: 700;
+        }
+        .module-card p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
         .instruction-box {
             background: #f8fafc;
             color: var(--text-main);
@@ -180,7 +219,6 @@
             </p>
             <div style="display: flex; flex-direction: column; gap: 4px; max-width: 400px; margin: 0 auto;">
                 <button class="btn-itip" style="background: var(--itip-blue);" onclick="goToScreen('screen-instructions')">📖 Ver Instructivo & Rutina</button>
-                <a href="itepdemomodulos.html" class="btn-itip" style="background: var(--itip-light-blue); text-decoration: none;">🚀 Ir al Tablero de Secciones (Módulos)</a>
             </div>
         </div>
 
@@ -195,9 +233,9 @@
                 
                 <!-- BOTONES INTEGRADOS DENTRO DEL INSTRUCTIVO -->
                 <div class="instruction-buttons">
-                    <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" style="margin:0; background: #d97706; font-size: 13px; padding: 10px; text-decoration: none;">🤖 Abrir Docente IA</a>
-                    <a href="Libro%20-%20Programa%20Ingl%C3%A9s%20B1%20Super%20Intensivo%20Esc...pdf" download class="btn-itip" style="margin:0; background: #059669; font-size: 13px; padding: 10px; text-decoration: none;">📥 Descargar Libro B1</a>
-                    <a href="https://www.campuslatinoamerica.edu.co" target="_blank" class="btn-itip" style="margin:0; background: #334155; font-size: 13px; padding: 10px; text-decoration: none;">🌐 Visitar CampusLA</a>
+                    <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" style="margin:0; background: #d97706; font-size: 13px; padding: 10px;">🤖 Abrir Docente IA</a>
+                    <a href="Libro - Programa Inglés B1 Super Intensivo Esc...pdf" download class="btn-itip" style="margin:0; background: #059669; font-size: 13px; padding: 10px;">📥 Descargar Libro B1</a>
+                    <a href="https://www.campuslatinoamerica.edu.co" target="_blank" class="btn-itip" style="margin:0; background: #334155; font-size: 13px; padding: 10px;">🌐 Visitar CampusLA</a>
                 </div>
 
                 <!-- ACCESO A EXAMEN REAL INTEGRADO -->
@@ -225,16 +263,73 @@
 
                 <h3>2. Requisitos por Sección en el Panel</h3>
                 <ul>
-                    <li><strong>Gramática (`preguntasitep.html`):</strong> Resuelve y analiza las estructuras de los 22 tiempos requeridos.</li>
-                    <li><strong>Lectura (`lecturasitep.html`):</strong> Lee con atención los textos y responde cada ítem de comprensión.</li>
-                    <li><strong>Escritura (`escrituraitep.html`):</strong> Redacta los ensayos cortos aplicando sintaxis formal.</li>
-                    <li><strong>Palabra Incorrecta (`palabraincorrectaitep.html`):</strong> Detecta y corrige los errores léxicos a contrarreloj.</li>
-                    <li><strong>Speaking (`speakingitep.html`):</strong> Practica tu fluidez, modulación y técnicas de parafraseo mediante audio.</li>
+                    <li><strong>Gramática:</strong> Resuelve y analiza las estructuras de los 22 tiempos requeridos.</li>
+                    <li><strong>Lectura (Reading):</strong> Lee con atención los textos y responde cada ítem de comprensión.</li>
+                    <li><strong>Escritura:</strong> Redacta los ensayos cortos aplicando sintaxis formal.</li>
+                    <li><strong>Palabra Incorrecta:</strong> Detecta y corrige los errores léxicos a contrarreloj.</li>
+                    <li><strong>Speaking:</strong> Practica tu fluidez, modulación y técnicas de parafraseo mediante audio.</li>
                 </ul>
             </div>
             <div class="btn-group">
                 <button class="btn-itip" style="background: #64748b; width: auto; padding: 11px 20px; margin:0;" onclick="goToScreen('screen-home')">⬅️ Volver</button>
-                <a href="itepdemomodulos.html" class="btn-itip" style="background: var(--itip-blue); width: auto; padding: 11px 22px; margin:0; text-decoration: none;">🚀 Ir al Tablero de Secciones ➔</a>
+                <button class="btn-itip" style="background: var(--itip-blue); width: auto; padding: 11px 22px; margin:0;" onclick="goToScreen('screen-dashboard')">🚀 Ir al Dashboard de Módulos ➔</button>
+            </div>
+        </div>
+
+        <!-- DASHBOARD / MENÚ PRINCIPAL DE MÓDULOS -->
+        <div id="screen-dashboard" class="screen">
+            <div class="preview-header">
+                <h1>iTEP Dashboard Principal</h1>
+                <h2>Acceso a Examen Real y Módulos de Práctica</h2>
+            </div>
+            <div class="dashboard-grid">
+                <div class="module-card" onclick="goToScreen('screen-reg')">
+                    <div>
+                        <h3>1. Formulario de Registro Examen</h3>
+                        <p>Acceso a examen real, validación con cámara, cédula y campos traducidos.</p>
+                    </div>
+                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 12px;">Iniciar Registro ➔</span>
+                </div>
+                <a href="preguntasitep.html" class="module-card">
+                    <div>
+                        <h3>2. Gramática</h3>
+                        <p>Evaluación interactiva de estructuras gramaticales avanzadas.</p>
+                    </div>
+                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 12px;">Practicar ➔</span>
+                </a>
+                <a href="lecturasitep.html" class="module-card" style="border-left: 4px solid #059669;">
+                    <div>
+                        <h3>3. Lectura (Reading)</h3>
+                        <p>Comprensión de textos, análisis y preguntas de selección múltiple.</p>
+                    </div>
+                    <span style="font-size: 12px; font-weight: 600; color: #059669; margin-top: 12px;">Practicar ➔</span>
+                </a>
+                <a href="escrituraitep.html" class="module-card">
+                    <div>
+                        <h3>4. Escritura</h3>
+                        <p>Redacción de ensayos cortos y supervisión sintáctica.</p>
+                    </div>
+                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 12px;">Practicar ➔</span>
+                </a>
+                <a href="palabraincorrectaitep.html" class="module-card">
+                    <div>
+                        <h3>5. Palabra Incorrecta</h3>
+                        <p>Identificación rápida de errores de concordancia y léxico.</p>
+                    </div>
+                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 12px;">Practicar ➔</span>
+                </a>
+                <a href="speakingitep.html" class="module-card">
+                    <div>
+                        <h3>6. Speaking</h3>
+                        <p>Práctica de expresión oral y técnicas de parafraseo.</p>
+                    </div>
+                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 12px;">Practicar ➔</span>
+                </a>
+            </div>
+            <div class="btn-group" style="margin-top: 25px;">
+                <button class="btn-itip" style="background: #64748b; width: auto; padding: 10px 18px; margin:0;" onclick="goToScreen('screen-instructions')">📖 Ver Instructivo</button>
+                <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" style="background: #d97706; width: auto; padding: 10px 18px; margin:0;">🤖 Docente IA</a>
+                <button class="btn-itip" style="background: var(--itip-blue); width: auto; padding: 10px 18px; margin:0;" onclick="goToScreen('screen-home')">🏠 Inicio</button>
             </div>
         </div>
 
@@ -308,11 +403,8 @@
     <script>
         function goToScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            const targetScreen = document.getElementById(screenId);
-            if (targetScreen) {
-                targetScreen.classList.add('active');
-                window.scrollTo(0, 0);
-            }
+            document.getElementById(screenId).classList.add('active');
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
