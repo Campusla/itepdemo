@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing - Part 1: iTEP Preview | CampusLA</title>
+    <style>
+        :root {
+            --primary-blue: #2c68b1;
+            --dark-blue: #1b4372;
+            --light-bg: #eaf1f8;
+            --text-color: #333333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 950px;
+            margin: 20px auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .writing-container h2 {
+            color: var(--dark-blue);
+            margin-top: 0;
+        }
+        .prompt-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .prompt-box h3 {
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+        .editor-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        #writing-textarea {
+            flex: 1;
+            height: 160px;
+            padding: 12px;
+            border: 1px solid #94a3b8;
+            border-radius: 4px;
+            font-size: 15px;
+            resize: vertical;
+        }
+        .sidebar-tools {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100px;
+        }
+        .tool-btn {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: var(--dark-blue);
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            text-align: center;
+        }
+        .tool-btn:hover {
+            background: #cbd5e1;
+        }
+        .word-counter-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .word-counter-info p {
+            margin: 0;
+        }
+        .warning-text {
+            color: #b45309;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .btn-submit {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .btn-submit:hover {
+            background: var(--dark-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <section id="seccion-writing" class="writing-container">
+            <h2>Writing - Part 1: iTEP Preview</h2>
+            
+            <div class="prompt-box">
+                <h3>Topic:</h3>
+                <p>Your school just started a "pen-pal" program in which students from different countries get to know one another by writing letters. Your pen pal is from New Zealand. Write a note introducing yourself, your family, and your city.</p>
+            </div>
+
+            <form id="writing-form">
+                <div class="editor-container">
+                    <textarea id="writing-textarea" name="writing_response" placeholder="Type your letter here..." maxlength="1000"></textarea>
+                    
+                    <div class="sidebar-tools">
+                        <button type="button" class="tool-btn" id="btn-copy">Copy</button>
+                        <button type="button" class="tool-btn" id="btn-cut">Cut</button>
+                        <button type="button" class="tool-btn" id="btn-paste">Paste</button>
+                        <button type="button" class="tool-btn" id="btn-undo">Undo</button>
+                        <button type="button" class="tool-btn" id="btn-redo">Redo</button>
+                    </div>
+                </div>
+
+                <div class="word-counter-info">
+                    <p>Maximum word count: <strong>100</strong></p>
+                    <p>Words left: <span id="words-left">100</span></p>
+                    <p class="warning-text">Do not press TAB key while in the writing area.</p>
+                </div>
+
+                <button type="submit" id="btn-enviar-writing" class="btn-submit">Enviar Respuesta de Writing</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('writing-textarea');
+        const wordsLeftSpan = document.getElementById('words-left');
+        const maxWords = 100;
+
+        textarea.addEventListener('input', function() {
+            let text = textarea.value.trim();
+            let words = text === "" ? [] : text.split(/\s+/);
+            let currentWords = words.length;
+            let left = maxWords - currentWords;
+
+            if (left < 0) {
+                let limitedWords = words.slice(0, maxWords);
+                textarea.value = limitedWords.join(' ');
+                left = 0;
+            }
+
+            wordsLeftSpan.innerText = left;
+        });
+
+        document.getElementById('writing-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("¡Respuesta de Writing enviada con éxito mi hermano!");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección 5: Speaking C1 | CampusLA</title>
+    <style>
+        :root {
+            --primary-blue: #2c68b1;
+            --dark-blue: #1b4372;
+            --light-bg: #eaf1f8;
+            --text-color: #333333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 950px;
+            margin: 20px auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .panel {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .btn-action {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .btn-action:hover {
+            background: var(--dark-blue);
+        }
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .vocab-card {
+            background: white;
+            padding: 12px 15px;
+            border-left: 4px solid var(--primary-blue);
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        .vocab-card strong {
+            color: var(--dark-blue);
+            display: inline-block;
+            margin-bottom: 3px;
+        }
+        .vocab-card p {
+            margin: 0;
+            color: #475569;
+            font-size: 12px;
+        }
+        .memorize-alert {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            color: #92400e;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Sección 5: Speaking C1 (Estructura, Tiempos Simples y Arsenal de Vocabulario)</h2>
+        
+        <div class="panel" style="background: #eff6ff; border: 1px solid #3b82f6;">
+            <h3 style="color: #1e40af; margin-top:0;">🎯 Guion Nivel C1: La Regla de los 3 Tiempos Simples</h3>
+            <p>Para alcanzar un nivel C1 en el speaking de iTEP sin enredarte con gramática excesiva, domina estrictamente las estructuras de los <strong>tres tiempos simples</strong>:</p>
+            <ul>
+                <li><strong>Presente Simple (Subject + Verb(s/es) + Complement):</strong> Para opiniones, posturas y verdades generales. <em>Ejemplo: "I strongly believe that innovation transforms modern societies."</em></li>
+                <li><strong>Pasado Simple (Subject + Verb_{ed/irregular} + Complement):</strong> Para anécdotas y antecedentes concretos. <em>Ejemplo: "Last year, our team deployed a massive platform."</em></li>
+                <li><strong>Futuro Simple (Subject + will / be going to + Verb + Complement):</strong> Para proyecciones y conclusiones lógicas. <em>Ejemplo: "Next decade, educational models will change completely."</em></li>
+            </ul>
+        </div>
+
+        <div class="panel">
+            <h3>Modelo de Notas en los 45 Segundos de Preparación</h3>
+            <p><strong>Prompt de ejemplo:</strong> <em>Do you think technology improves education? Why?</em></p>
+            <div style="background: white; padding: 12px; border-radius: 4px; border: 1px solid #cbd5e1; margin-bottom: 15px;">
+                <p style="margin:0; font-weight:bold; color: #1b4372;">Anota solo viñetas rápidas y desarróllalas usando los tiempos simples:</p>
+                <ul style="margin: 5px 0 0 20px;">
+                    <li>Bullet 1: Global access empowers students (Presente Simple).</li>
+                    <li>Bullet 2: We launched a prototype last month (Pasado Simple).</li>
+                    <li>Bullet 3: Education will reach everyone tomorrow (Futuro Simple).</li>
+                </ul>
+            </div>
+
+            <div style="background: var(--dark-blue); color: white; padding: 15px; border-radius: 6px; text-align: center; margin: 15px 0; font-size: 18px;">
+                Preparación: <span id="p-timer">45</span>s | Exposición: <span id="s-timer">60</span>s
+            </div>
+            <div style="text-align: center;">
+                <button class="btn-action" onclick="startTimer()">Iniciar Simulación de Voz</button>
+            </div>
+        </div>
+
+        <!-- VOCABULARIO C1 EXPANDIDO -->
+        <div class="panel">
+            <h3 style="color: #1b4372;">Arsenal C1: Expresiones Idiomáticas, Phrasal Verbs y Verbos Clave</h3>
+            
+            <div class="memorize-alert">
+                ⚠️ ATENCIÓN: Debes memorizar estrictamente este arsenal léxico para asegurar la máxima puntuación en fluidez y vocabulario avanzado.
+            </div>
+
+            <p><strong>1. Phrasal Verbs Esenciales:</strong></p>
+            <div class="vocab-grid" style="margin-bottom: 20px;">
+                <div class="vocab-card">
+                    <strong>Bring up</strong>
+                    <p>Mencionar un tema o iniciar una conversación.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Carry out</strong>
+                    <p>Llevar a cabo, ejecutar o realizar una tarea.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Find out</strong>
+                    <p>Averiguar, enterarse o descubrir información.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Give up</strong>
+                    <p>Rendirse, ceder o abandonar un propósito.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Look after</strong>
+                    <p>Cuidar, atender o velar por alguien/algo.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Point out</strong>
+                    <p>Señalar, destacar o hacer notar un aspecto.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Rely on</strong>
+                    <p>Depender de o confiar plenamente en algo.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Set up</strong>
+                    <p>Configurar, armar, instalar o establecer.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Take over</strong>
+                    <p>Asumir el control, el mando o la dirección.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Work out</strong>
+                    <p>Solucionar un problema o resolver una situación.</p>
+                </div>
+            </div>
+
+            <p><strong>2. Expresiones Idiomáticas de Alto Impacto (Idioms):</strong></p>
+            <div class="vocab-grid" style="margin-bottom: 20px;">
+                <div class="vocab-card">
+                    <strong>A piece of cake</strong>
+                    <p>Sumamente fácil, pan comido.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Cost an arm and a leg</strong>
+                    <p>Costar una fortuna, carísimo.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Hit the nail on the head</strong>
+                    <p>Dar en el clavo, acertar de pleno.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Once in a blue moon</strong>
+                    <p>Rara vez, casi nunca, de Pascuas a Ramos.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Bite the bullet</strong>
+                    <p>Afrontar una situación difícil con valor.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Break the ice</strong>
+                    <p>Romper el hielo en una conversación social.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Call it a day</strong>
+                    <p>Dar por terminado el trabajo o la jornada.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Get out of hand</strong>
+                    <p>Salirse de control o de las manos.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>Under the weather</strong>
+                    <p>Sentirse indispuesto, enfermo o decaído.</p>
+                </div>
+                <div class="vocab-card">
+                    <strong>The ball is in your court</strong>
+                    <p>La decisión o el siguiente paso está en tus manos.</p>
+                </div>
+            </div>
+
+            <p><strong>3. Banco Maestro de Verbos Normales (Acciones Clave C1):</strong></p>
+            <div style="background: white; padding: 15px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; line-height: 1.6; max-height: 180px; overflow-y: auto; color: #334155;">
+                Accept, Achieve, Acquire, Adapt, Adjust, Analyze, Anticipate, Apply, Assess, Assume, 
+                Attempt, Attract, Author, Balance, Calculate, Capture, Challenge, Clarify, Collaborate, Combine, 
+                Compare, Compete, Comprise, Conceive, Conclude, Conduct, Conform, Connect, Consist, Construct, 
+                Consult, Consume, Contact, Contain, Continue, Contribute, Control, Convert, Convince, Cooperate, 
+                Coordinate, Create, Critique, Decide, Define, Demonstrate, Deploy, Design, Detect, Determine, 
+                Develop, Differentiate, Discover, Discuss, Distribute, Document, Dominate, Draft, Edit, Educate, 
+                Elicit, Emphasize, Enable, Encounter, Encourage, Endure, Engage, Enhance, Ensure, Establish, 
+                Estimate, Evaluate, Examine, Exceed, Execute, Expand, Experience, Explain, Explore, Express, 
+                Extend, Facilitate, Focus, Formulate, Foster, Function, Generate, Guide, Handle, Highlight, 
+                Identify, Illustrate, Implement, Improve, Include, Indicate, Influence, Initiate, Innovate, Inspire.
+            </div>
+        </div>
+
+        <div style="text-align: right; margin-top: 20px;">
+            <button class="btn-action" style="background: #16a34a;" onclick="alert('¡Sección Speaking C1 completada con éxito mi hermano!')">Finalizar Sección</button>
+        </div>
+    </div>
+
+    <script>
+        function startTimer() {
+            let p = 45, s = 60;
+            let pEl = document.getElementById('p-timer');
+            let sEl = document.getElementById('s-timer');
+            
+            let pInt = setInterval(() => {
+                p--; pEl.innerText = p;
+                if(p <= 0) {
+                    clearInterval(pInt);
+                    let sInt = setInterval(() => {
+                        s--; sEl.innerText = s;
+                        if(s <= 0) {
+                            clearInterval(sInt);
+                            alert("¡Tiempo de speaking finalizado!");
+                        }
+                    }, 1000);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

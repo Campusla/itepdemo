@@ -1,0 +1,592 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTEP Demo - Módulos</title>
+    <!-- FontAwesome para el icono de auriculares -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #3b82f6;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .exam-container {
+            background-color: #f1f5f9;
+            width: 750px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .exam-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .exam-instructions {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 30px;
+        }
+
+        .icon-container {
+            font-size: 60px;
+            color: #334155;
+            margin-bottom: 30px;
+        }
+
+        .warning-box {
+            background-color: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 35px;
+            line-height: 1.4;
+        }
+
+        .next-button {
+            background-color: #ffffff;
+            color: #0f172a;
+            border: 2px solid #cbd5e1;
+            padding: 12px 50px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .next-button:hover {
+            background-color: #f8fafc;
+            border-color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PANTALLA 1: PREVIEW DE AUDIO -->
+    <div id="preview-section" class="exam-container">
+        <div class="exam-header">iTEP Preview</div>
+        <div class="exam-instructions">Please put your headphones on now.</div>
+        
+        <div class="icon-container">
+            <i class="fa-solid fa-headphones"></i>
+        </div>
+        
+        <div class="warning-box">
+            Whenever you see this Headphone Icon, you must have your headphones on. If you are not using headphones, please adjust your sound volume to the appropriate level.
+        </div>
+        
+        <button id="next-btn-preview" class="next-button">Next</button>
+    </div>
+
+    <!-- PANTALLA 2: SECCIÓN 1 - GRAMMAR (30 Preguntas Horizontales Integradas) -->
+    <div id="grammar-section" class="exam-container hidden" style="max-width: 800px; text-align: left; background: #ffffff;">
+        <div style="text-align: right; font-weight: bold; color: #2c68b1; margin-bottom: 15px; font-size: 14px;" id="progress-indicator">Pregunta 1 de 30</div>
+
+        <!-- PREGUNTA 1 -->
+        <div class="question-step active" id="q-1" style="display:block;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>1.</strong> The students ______ to visit a museum tomorrow.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">is going</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-1')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">are going</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will going</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will be go</button>
+                </div>
+                <div id="exp-1" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> El sujeto plural exige "are going".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 2 -->
+        <div class="question-step" id="q-2" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>2.</strong> She has lived in this city ______ five years.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">since</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-2')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">for</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">during</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">from</button>
+                </div>
+                <div id="exp-2" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> "For" se usa con periodos de tiempo.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 3 -->
+        <div class="question-step" id="q-3" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>3.</strong> If I ______ rich, I would travel around the world.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">am</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will be</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-3')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">were</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">had been</button>
+                </div>
+                <div id="exp-3" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Segundo condicional usa "were".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 4 -->
+        <div class="question-step" id="q-4" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>4.</strong> Neither the teacher nor the students ______ present at the meeting.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">was</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-4')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">were</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">is</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">has</button>
+                </div>
+                <div id="exp-4" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Concuerda con el sujeto más cercano.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 5 -->
+        <div class="question-step" id="q-5" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>5.</strong> He speaks English ______ than his brother.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">fluent</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">more fluent</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-5')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">more fluently</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">fluently</button>
+                </div>
+                <div id="exp-5" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Adverbio comparativo.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 6 -->
+        <div class="question-step" id="q-6" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>6.</strong> By this time next year, I ______ my university degree.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will finish</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-6')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will have finished</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">have finished</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">am finishing</button>
+                </div>
+                <div id="exp-6" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Futuro perfecto.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 7 -->
+        <div class="question-step" id="q-7" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>7.</strong> This is the best movie ______ I have ever seen.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">who</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">which</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-7')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">that</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">where</button>
+                </div>
+                <div id="exp-7" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Se prefiere "that" tras superlativo.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 8 -->
+        <div class="question-step" id="q-8" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>8.</strong> I look forward to ______ you soon.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">see</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-8')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">seeing</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">saw</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">be see</button>
+                </div>
+                <div id="exp-8" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Gerundio tras "look forward to".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 9 -->
+        <div class="question-step" id="q-9" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>9.</strong> The report needs ______ before submission.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">review</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">to review</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-9')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">reviewing</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">reviewed</button>
+                </div>
+                <div id="exp-9" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Sentido pasivo con gerundio.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 10 -->
+        <div class="question-step" id="q-10" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>10.</strong> Scarcely had I arrived home ______ it started to rain.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">than</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-10')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">when</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">then</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">before</button>
+                </div>
+                <div id="exp-10" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Correlación "scarcely... when".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 11 -->
+        <div class="question-step" id="q-11" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>11.</strong> Despite ______ hard, she failed the exam.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">studied</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">study</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-11')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">studying</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">to study</button>
+                </div>
+                <div id="exp-11" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Preposición "despite" con gerundio.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 12 -->
+        <div class="question-step" id="q-12" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>12.</strong> Not only ______ late, but he also forgot his documents.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">he was</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-12')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">was he</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">is he</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">he is</button>
+                </div>
+                <div id="exp-12" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Inversión con "Not only".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 13 -->
+        <div class="question-step" id="q-13" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>13.</strong> I wish I ______ more time to finish this project.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">have</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will have</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-13')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">had</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">have had</button>
+                </div>
+                <div id="exp-13" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Pasado simple con "I wish".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 14 -->
+        <div class="question-step" id="q-14" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>14.</strong> The new software ______ by the IT team next week.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will install</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-14')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will be installed</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">is installing</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">installed</button>
+                </div>
+                <div id="exp-14" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Voz pasiva en futuro.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 15 -->
+        <div class="question-step" id="q-15" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>15.</strong> She suggested ______ to the meeting earlier.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">to go</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-15')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">going</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">go</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">that go</button>
+                </div>
+                <div id="exp-15" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Gerundio tras "suggest".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 16 -->
+        <div class="question-step" id="q-16" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>16.</strong> You ______ have told me about the schedule change!</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">must</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-16')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">should</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">can</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will</button>
+                </div>
+                <div id="exp-16" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> "Should have" para reproche.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 17 -->
+        <div class="question-step" id="q-17" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>17.</strong> Hard ______ he tried, he couldn't solve the puzzle.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">as</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-17')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">though</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">although</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">if</button>
+                </div>
+                <div id="exp-17" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Estructura concesiva.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 18 -->
+        <div class="question-step" id="q-18" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>18.</strong> He acts as if he ______ everything about the business.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">knows</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-18')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">knew</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">has known</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">had known</button>
+                </div>
+                <div id="exp-18" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Pasado simple con "as if".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 19 -->
+        <div class="question-step" id="q-19" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>19.</strong> Little ______ that the decision would change everything.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">they know</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-19')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">did they know</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">they knew</button>
+                </div>
+                <div id="exp-19" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Inversión con "Little".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 20 -->
+        <div class="question-step" id="q-20" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>20.</strong> The manager insisted that the report ______ submitted immediately.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">is</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">was</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-20')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">be</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will be</button>
+                </div>
+                <div id="exp-20" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Subjuntivo obligatorio.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 21 -->
+        <div class="question-step" id="q-21" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>21.</strong> It's high time you ______ studying for the certification.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">start</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-21')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">started</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will start</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">have started</button>
+                </div>
+                <div id="exp-21" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Pasado simple con "It's high time".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 22 -->
+        <div class="question-step" id="q-22" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>22.</strong> Supposing you ______ the scholarship, where would you live?</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">win</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-22')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">won</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will win</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">had won</button>
+                </div>
+                <div id="exp-22" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Condicional hipotético con "supposing".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 23 -->
+        <div class="question-step" id="q-23" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>23.</strong> I'd rather you ______ use your phone during the conference.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">don't</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">won't</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-23')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">didn't</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">not</button>
+                </div>
+                <div id="exp-23" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Pasado simple con "I'd rather + sujeto".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 24 -->
+        <div class="question-step" id="q-24" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>24.</strong> No sooner had we stepped outside ______ the phone rang.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">when</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-24')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">than</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">then</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">before</button>
+                </div>
+                <div id="exp-24" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Correlación "No sooner... than".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 25 -->
+        <div class="question-step" id="q-25" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>25.</strong> She is said ______ one of the best programmers in the region.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">being</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-25')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">to be</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">is</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">to have</button>
+                </div>
+                <div id="exp-25" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Pasiva impersonal con infinitivo.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 26 -->
+        <div class="question-step" id="q-26" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>26.</strong> Try ______ quiet when you enter the library.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-26')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">to keep</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">keeping</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">keep</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">kept</button>
+                </div>
+                <div id="exp-26" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> "Try to + verbo" para esfuerzo.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 27 -->
+        <div class="question-step" id="q-27" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>27.</strong> I remember ______ the document before leaving the office.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">to save</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-27')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">saving</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">save</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">saved</button>
+                </div>
+                <div id="exp-27" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> "Remember + gerundio" para recuerdo pasado.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 28 -->
+        <div class="question-step" id="q-28" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>28.</strong> So fast ______ that nobody could catch him.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">he ran</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-28')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">did he run</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">ran he</button>
+                </div>
+                <div id="exp-28" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Inversión con "So + adverbio".</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 29 -->
+        <div class="question-step" id="q-29" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>29.</strong> The project was successfully completed ______ the tight deadline.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">although</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">because</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-29')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">despite</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">unless</button>
+                </div>
+                <div id="exp-29" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> "Despite" seguido de frase nominal.</div>
+            </div>
+        </div>
+
+        <!-- PREGUNTA 30 -->
+        <div class="question-step" id="q-30" style="display:none;">
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <p><strong>30.</strong> Had I known about the traffic, I ______ another route.</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">will take</button>
+                    <button class="option-btn" onclick="wrongAnswer(this)" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">would take</button>
+                    <button class="option-btn" onclick="rightAnswer(this, 'exp-30')" style="background: white; border: 2px solid #2c68b1; color: #1b4372; padding: 12px 18px; border-radius: 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 600;">would have taken</button>
+                </div>
+                <div id="exp-30" style="margin-top: 15px; padding: 12px; background: #d1fae5; border: 1px solid #10b981; color: #065f46; border-radius: 4px; display: none; font-size: 14px;"><strong>¡Correcto!</strong> Tercer condicional con inversión.</div>
+            </div>
+        </div>
+
+        <!-- CONTROLES DE NAVEGACIÓN INTERNA -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+            <button id="prev-btn" onclick="changeQuestion(-1)" style="visibility: hidden; background: #64748b; color: white; border: none; padding: 10px 22px; border-radius: 4px; cursor: pointer; font-weight: bold;">&larr; Anterior</button>
+            <button id="next-btn-grammar" onclick="changeQuestion(1)" style="background: #2c68b1; color: white; border: none; padding: 10px 22px; border-radius: 4px; cursor: pointer; font-weight: bold;">Siguiente ➔</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS INTEGRADOS -->
+    <script>
+        // Transición de la pantalla de audio a la de Grammar
+        document.getElementById('next-btn-preview').addEventListener('click', function() {
+            document.getElementById('preview-section').classList.add('hidden');
+            document.getElementById('grammar-section').classList.remove('hidden');
+        });
+
+        // Lógica de las 30 preguntas de Grammar
+        let currentQ = 1;
+        const totalQ = 30;
+
+        function changeQuestion(direction) {
+            if (currentQ === totalQ && direction === 1) {
+                alert('¡Fin de la sección de Grammar! Aquí puedes conectar con la siguiente pantalla de Reading.');
+                return;
+            }
+
+            document.getElementById('q-' + currentQ).style.display = 'none';
+            document.getElementById('q-' + currentQ).classList.remove('active');
+            
+            currentQ += direction;
+            if (currentQ < 1) currentQ = 1;
+            if (currentQ > totalQ) currentQ = totalQ;
+
+            let activeQ = document.getElementById('q-' + currentQ);
+            activeQ.style.display = 'block';
+            activeQ.classList.add('active');
+            
+            document.getElementById('progress-indicator').innerText = `Pregunta ${currentQ} de ${totalQ}`;
+            document.getElementById('prev-btn').style.visibility = (currentQ === 1) ? 'hidden' : 'visible';
+            
+            let nextBtn = document.getElementById('next-btn-grammar');
+            if (currentQ === totalQ) {
+                nextBtn.innerText = "Siguiente Sección ➔";
+                nextBtn.style.background = "#10b981";
+            } else {
+                nextBtn.innerText = "Siguiente ➔";
+                nextBtn.style.background = "#2c68b1";
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function rightAnswer(btn, expId) {
+            const card = btn.closest('div').parentElement;
+            card.querySelectorAll('.option-btn').forEach(b => {
+                b.style.background = 'white';
+                b.style.color = '#1b4372';
+            });
+            btn.style.background = '#10b981';
+            btn.style.color = 'white';
+            document.getElementById(expId).style.display = 'block';
+        }
+
+        function wrongAnswer(btn) {
+            btn.style.background = '#ef4444';
+            btn.style.color = 'white';
+        }
+    </script>
+</body>
+</html>
