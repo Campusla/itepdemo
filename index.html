@@ -1,1 +1,325 @@
-a
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador iTEP Oficial - CampusLA & Escuela Andina</title>
+    <style>
+        :root {
+            --itip-blue: #2c73d2;
+            --itip-dark: #1b4d8c;
+            --bg-color: #3b82f6;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #333333;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #4682b4;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .screen {
+            display: none;
+        }
+        .screen.active {
+            display: block;
+        }
+        .preview-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 25px;
+        }
+        .preview-header h1 {
+            font-size: 38px;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        .preview-header h2 {
+            font-size: 20px;
+            margin: 5px 0 0 0;
+            font-weight: normal;
+        }
+        .reg-box {
+            background: #6ba4e8;
+            border-radius: 10px;
+            padding: 25px;
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .form-group label {
+            flex: 1;
+            font-size: 14px;
+            font-weight: bold;
+            min-width: 180px;
+        }
+        .form-group input, .form-group select {
+            flex: 2;
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            font-size: 14px;
+            background: white;
+            color: #333;
+            min-width: 200px;
+        }
+        .radio-group {
+            flex: 2;
+            display: flex;
+            gap: 20px;
+        }
+        .btn-itip {
+            display: block;
+            width: 280px;
+            margin: 15px auto;
+            background: #85b6f2;
+            color: #1b4d8c;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-itip:hover {
+            background: white;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .module-card {
+            background: #6ba4e8;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-decoration: none;
+            display: block;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .module-card:hover {
+            transform: translateY(-3px);
+            background: #5293e4;
+        }
+        .module-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 17px;
+        }
+        .module-card p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        .instruction-box {
+            background: #f8fafc;
+            color: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+            max-height: 450px;
+            overflow-y: auto;
+            border: 1px solid #cbd5e1;
+        }
+        .instruction-box h3 {
+            color: #1b4d8c;
+            margin-top: 15px;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 5px;
+        }
+        .instruction-box ul {
+            padding-left: 20px;
+        }
+        .instruction-box li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- PANTALLA 1: HOME / INICIO -->
+        <div id="screen-home" class="screen active">
+            <div class="preview-header" style="margin-top: 20px;">
+                <h1>iTEP</h1>
+                <h2>Simulador Oficial Profesional - CampusLA & Escuela Andina</h2>
+            </div>
+            <div style="text-align: center; margin-top: 25px; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+                <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" style="background: #f59e0b; color: white;">🤖 Abrir Docente IA (Asistente)</a>
+                <a href="Libro - Programa Inglés B1 Super Intensivo Esc...pdf" download class="btn-itip" style="background: #10b981; color: white;">📥 Descargar Libro B1 (Obligatorio)</a>
+                <a href="https://www.campuslatinoamerica.edu.co" target="_blank" class="btn-itip" style="background: #0f172a; color: white;">🌐 Visitar Campus Latinoamérica</a>
+                <button class="btn-itip" style="background: #334155; color: white;" onclick="goToScreen('screen-instructions')">📖 Instructivo & Rutina de 1 Mes</button>
+                <button class="btn-itip" onclick="goToScreen('screen-dashboard')">🚀 Entrar al Panel de Módulos</button>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE INSTRUCTIVO PRO Y RUTINA -->
+        <div id="screen-instructions" class="screen">
+            <div class="preview-header">
+                <h1>Instructivo Maestro iTEP & Metodología</h1>
+                <h2>Guía Estricta de Preparación (Menos de 1 Mes)</h2>
+            </div>
+            <div class="instruction-box">
+                <p><strong>¡Atención aspirante!</strong> Este simulador cuenta con bloqueos estrictos: <strong>no podrás avanzar de una actividad a la otra si no completas y memorizas todo</strong> el contenido exigido en cada fase.</p>
+                
+                <div style="background: #e0f2fe; padding: 12px; border-radius: 6px; margin: 15px 0; border-left: 4px solid #0284c7;">
+                    <strong>🧠 Herramienta Obligatoria:</strong> Despliega y utiliza permanentemente nuestro <a href="https://campusla.github.io/docenteia/" target="_blank" style="color: #0369a1; font-weight: bold;">Docente IA integrado</a>. Pregúntale lo que sea sobre gramática, vocabulario y traducción. Asimismo, descarga el <strong>Libro de Inglés B1</strong>, síguelo al pie de la letra y exígele a la IA que te explique cada detalle. Cada semana autoevalúate con ayuda de un familiar, tu pareja o tu mozo sin piedad.
+                </div>
+
+                <h3>1. Regla de Oro del Formulario (Registro)</h3>
+                <ul>
+                    <li>Deberás saber exactamente qué llenar en cada casilla: Nombre, Apellido, <strong>Cédula / Identification Number</strong>, País de residencia y Lengua nativa.</li>
+                    <li><strong>¡Pilas!</strong> El examen te estará grabando con cámara desde este instante para validar identidad. Hazlo completamente solo.</li>
+                </ul>
+
+                <h3>2. Módulos de Evaluación</h3>
+                <ul>
+                    <li><strong>Gramática:</strong> Dominio estricto de los 22 tiempos gramaticales (preguntasitep.html).</li>
+                    <li><strong>Escritura:</strong> Redacción y estructuración correcta (escrituraitep.html).</li>
+                    <li><strong>Palabra Incorrecta:</strong> Detección rápida de fallas sintácticas (palabraincorrectaitep.html).</li>
+                    <li><strong>Speaking:</strong> Práctica de fluidez, parafraseo y micrófono (speakingitep.html).</li>
+                    <li><strong>Panel Secundario:</strong> Acceso a más herramientas en <em>itepdemomodulos.html</em>.</li>
+                </ul>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" style="margin:0; background: #f59e0b; color: white; width: auto; padding: 10px 15px;">🤖 Ir al Docente IA</a>
+                <button class="btn-itip" style="margin:0; width: auto; padding: 10px 15px;" onclick="goToScreen('screen-dashboard')">⬅️ Volver al Panel</button>
+            </div>
+        </div>
+
+        <!-- DASHBOARD / MENÚ PRINCIPAL DE MÓDULOS -->
+        <div id="screen-dashboard" class="screen">
+            <div class="preview-header">
+                <h1>iTEP Dashboard Principal</h1>
+                <h2>Selecciona el módulo en orden (Formulario y Rutas Conectadas)</h2>
+            </div>
+            <div class="dashboard-grid">
+                <div class="module-card" onclick="goToScreen('screen-reg')">
+                    <h3>1. Introducción y Registro</h3>
+                    <p>Formulario oficial, cédula, Docente IA integrado y advertencia de cámara activa.</p>
+                </div>
+                <a href="preguntasitep.html" class="module-card">
+                    <h3>2. Gramática (22 Tiempos)</h3>
+                    <p>Evaluación interactiva de estructuras gramaticales avanzadas.</p>
+                </a>
+                <a href="escrituraitep.html" class="module-card">
+                    <h3>3. Escritura</h3>
+                    <p>Redacción de ensayos cortos y supervisión de sintaxis.</p>
+                </a>
+                <a href="palabraincorrectaitep.html" class="module-card">
+                    <h3>4. Palabra Incorrecta</h3>
+                    <p>Identificación rápida de errores de concordancia y uso léxico.</p>
+                </a>
+                <a href="speakingitep.html" class="module-card">
+                    <h3>5. Speaking</h3>
+                    <p>Práctica de expresión oral y técnicas de parafraseo.</p>
+                </a>
+                <a href="itepdemomodulos.html" class="module-card" style="background: #1e3a8a;">
+                    <h3>6. Panel Secundario (Módulos Extra)</h3>
+                    <p>Accede al rotso complementario que configuramos en tu repositorio.</p>
+                </a>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 25px; flex-wrap: wrap;">
+                <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" style="margin:0; background: #f59e0b; color: white; width: auto; padding: 10px 15px;">🤖 Docente IA</a>
+                <a href="Libro - Programa Inglés B1 Super Intensivo Esc...pdf" download class="btn-itip" style="margin:0; background: #10b981; color: white; width: auto; padding: 10px 15px;">📥 Descargar Libro B1</a>
+                <button class="btn-itip" style="margin:0; background: #334155; color: white; width: auto; padding: 10px 15px;" onclick="goToScreen('screen-home')">🏠 Menú Principal</button>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE REGISTRO / FORMULARIO (Módulo 1) -->
+        <div id="screen-reg" class="screen">
+            <div class="preview-header">
+                <h1>iTEP</h1>
+                <h2>Registration <span style="font-size: 14px; display:block; color: #fef08a;">⚠️ Módulo 1: Cámara Activa & Docente IA</span></h2>
+            </div>
+            <div class="reg-box">
+                <p style="font-size: 13px; margin-bottom: 15px; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px; line-height: 1.5;">
+                    <strong>Aviso estricto:</strong> Llena cada casilla con precisión (Cédula / ID, País, etc.). <em>El sistema te está grabando con cámara</em> y no podrás avanzar si dejas campos vacíos. Despliega el <a href="https://campusla.github.io/docenteia/" target="_blank" style="color: #fef08a; font-weight: bold; text-decoration: underline;">Docente IA</a> si necesitas asistencia inmediata.
+                </p>
+                <div class="form-group">
+                    <label>Last (Family or Surname) Name:</label>
+                    <input type="text" id="reg-lastname" placeholder="Ej. Alvarez Salamanca">
+                </div>
+                <div class="form-group">
+                    <label>First Name (Given Name):</label>
+                    <input type="text" id="reg-firstname" placeholder="Ej. Hollman">
+                </div>
+                <div class="form-group">
+                    <label>* Identification / Cédula Number:</label>
+                    <input type="text" id="reg-id" placeholder="Número de documento oficial">
+                </div>
+                <div class="form-group">
+                    <label>* Email Address:</label>
+                    <input type="email" id="reg-email" placeholder="correo@campuslatinoamerica.edu.co">
+                </div>
+                <div class="form-group">
+                    <label>* Gender:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gender" value="Male"> Male</label>
+                        <label><input type="radio" name="gender" value="Female"> Female</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>* Country of Residence:</label>
+                    <select id="reg-country">
+                        <option value="">Type or Select</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Mexico">México</option>
+                        <option value="Peru">Perú</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>* Native Language:</label>
+                    <select id="reg-native">
+                        <option value="">Type or Select</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="English">English</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Agency Name:</label>
+                    <input type="text" value="CampusLA & Escuela Andina">
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 25px; flex-wrap: wrap;">
+                <button class="btn-itip" style="margin:0; background: #64748b; color: white; width: auto; padding: 10px 20px;" onclick="goToScreen('screen-dashboard')">⬅️ Volver al Panel</button>
+                <a href="preguntasitep.html" class="btn-itip" style="margin:0; background: #10b981; color: white; width: auto; padding: 10px 20px; text-decoration: none;">Avanzar a Gramática ➔</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function goToScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
