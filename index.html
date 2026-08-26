@@ -12,9 +12,7 @@
             --text-main: #1e293b;
             --text-muted: #64748b;
         }
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         body {
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: var(--bg-gradient);
@@ -34,180 +32,60 @@
             padding: 40px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
-        .screen {
-            display: none;
-        }
-        .screen.active {
-            display: block;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .preview-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .preview-header h1 {
-            font-size: 38px;
-            color: var(--itip-blue);
-            margin: 0;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        .preview-header h2 {
-            font-size: 17px;
-            color: var(--text-muted);
-            margin: 8px 0 0 0;
-            font-weight: 500;
-        }
+        .screen { display: none; }
+        .screen.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        .preview-header { text-align: center; margin-bottom: 25px; }
+        .preview-header h1 { font-size: 38px; color: var(--itip-blue); margin: 0; font-weight: 800; letter-spacing: -0.5px; }
+        .preview-header h2 { font-size: 17px; color: var(--text-muted); margin: 8px 0 0 0; font-weight: 500; }
         .btn-itip {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            max-width: 420px;
-            margin: 12px auto;
-            background: var(--itip-light-blue);
-            color: white;
-            border: none;
-            padding: 14px 20px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-            text-decoration: none;
-            transition: all 0.2s ease;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; max-width: 420px; margin: 12px auto;
+            background: var(--itip-light-blue); color: white; border: none;
+            padding: 14px 20px; border-radius: 10px; font-size: 15px; font-weight: 600;
+            cursor: pointer; text-align: center; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+            text-decoration: none; transition: all 0.2s ease;
         }
-        .btn-itip:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
-        }
+        .btn-itip:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3); }
         .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
-            margin-top: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px; margin-top: 25px;
         }
         .module-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 22px;
-            border-radius: 12px;
-            color: var(--text-main);
-            text-align: left;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            background: #f8fafc; border: 1px solid #e2e8f0; padding: 22px;
+            border-radius: 12px; color: var(--text-main); text-align: left;
+            cursor: pointer; text-decoration: none; display: flex;
+            flex-direction: column; justify-content: space-between;
+            transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
         .module-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--itip-light-blue);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
-            background: #ffffff;
+            transform: translateY(-3px); border-color: var(--itip-light-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06); background: #ffffff;
         }
-        .module-card h3 {
-            margin: 0 0 8px 0;
-            font-size: 17px;
-            color: var(--itip-blue);
-            font-weight: 700;
-        }
-        .module-card p {
-            margin: 0;
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
+        .module-card h3 { margin: 0 0 8px 0; font-size: 17px; color: var(--itip-blue); font-weight: 700; }
+        .module-card p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
         .instruction-box {
-            background: #f8fafc;
-            color: var(--text-main);
-            padding: 25px;
-            border-radius: 12px;
-            font-size: 14px;
-            line-height: 1.7;
-            max-height: 480px;
-            overflow-y: auto;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 20px;
+            background: #f8fafc; color: var(--text-main); padding: 25px;
+            border-radius: 12px; font-size: 14px; line-height: 1.7;
+            max-height: 480px; overflow-y: auto; border: 1px solid #e2e8f0; margin-bottom: 20px;
         }
-        .instruction-box h3 {
-            color: var(--itip-blue);
-            margin-top: 20px;
-            font-size: 16px;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 6px;
-        }
-        .instruction-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 10px;
-            margin: 15px 0 25px 0;
-        }
-        .reg-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 25px;
-        }
-        .form-group {
-            margin-bottom: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+        .instruction-box h3 { color: var(--itip-blue); margin-top: 20px; font-size: 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
+        .instruction-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 15px 0 25px 0; }
+        .reg-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; }
+        .form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
         @media(min-width: 640px) {
-            .form-group {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-            .form-group label {
-                flex: 1;
-            }
-            .form-group input, .form-group select {
-                flex: 1.5;
-            }
+            .form-group { flex-direction: row; align-items: center; justify-content: space-between; }
+            .form-group label { flex: 1; }
+            .form-group input, .form-group select { flex: 1.5; }
         }
-        .form-group label {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--itip-blue);
-        }
-        .form-group input, .form-group select {
-            padding: 11px 14px;
-            border-radius: 8px;
-            border: 1px solid #cbd5e1;
-            font-size: 14px;
-            background: white;
-            color: var(--text-main);
-        }
-        .radio-group {
-            display: flex;
-            gap: 20px;
-            flex: 1.5;
-        }
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
+        .form-group label { font-size: 14px; font-weight: 600; color: var(--itip-blue); }
+        .form-group input, .form-group select { padding: 11px 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 14px; background: white; color: var(--text-main); }
+        .radio-group { display: flex; gap: 20px; flex: 1.5; }
+        .btn-group { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
     </style>
 </head>
 <body>
-
     <div class="container">
-        
         <!-- PANTALLA 1: BIENVENIDA -->
         <div id="screen-home" class="screen active">
             <div class="preview-header" style="padding-top: 20px;">
@@ -222,53 +100,26 @@
             </div>
         </div>
 
-        <!-- PANTALLA DE INSTRUCTIVO & ACCESO A EXAMEN REAL INTEGRADO -->
+        <!-- INSTRUCTIVO -->
         <div id="screen-instructions" class="screen">
             <div class="preview-header">
                 <h1>Instructivo Maestro iTEP</h1>
                 <h2>Guía de Ruta Estricta & Recursos Integrados</h2>
             </div>
             <div class="instruction-box">
-                <p><strong>¡Atención estudiante!</strong> Para avanzar de manera exitosa en este simulador y aprobar las fases de certificación, utiliza los siguientes recursos clave mientras revisas las instrucciones:</p>
-                
-                <!-- BOTONES INTEGRADOS DENTRO DEL INSTRUCTIVO -->
+                <p><strong>¡Atención estudiante!</strong> Utiliza los siguientes recursos clave mientras revisas las instrucciones:</p>
                 <div class="instruction-buttons">
                     <a href="https://campusla.github.io/docenteia/" target="_blank" class="btn-itip" style="margin:0; background: #d97706; font-size: 13px; padding: 10px;">🤖 Abrir Docente IA</a>
                     <a href="Libro - Programa Inglés B1 Super Intensivo Esc...pdf" download class="btn-itip" style="margin:0; background: #059669; font-size: 13px; padding: 10px;">📥 Descargar Libro B1</a>
                     <a href="https://www.campuslatinoamerica.edu.co" target="_blank" class="btn-itip" style="margin:0; background: #334155; font-size: 13px; padding: 10px;">🌐 Visitar CampusLA</a>
                 </div>
-
-                <!-- ACCESO A EXAMEN REAL INTEGRADO -->
                 <div style="background: #eff6ff; border: 2px dashed #3b82f6; padding: 18px; border-radius: 10px; margin-bottom: 20px; text-align: center;">
                     <h3 style="margin-top: 0; color: #1e3a8a; border: none;">🚀 Acceso a Examen Real</h3>
-                    <p style="font-size: 13px; color: #475569; margin-bottom: 12px;">Integra el formulario oficial de registro y validación biométrica con supervisión por cámara antes de iniciar los módulos.</p>
+                    <p style="font-size: 13px; color: #475569; margin-bottom: 12px;">Integra el formulario oficial de registro y validación biométrica.</p>
                     <button class="btn-itip" style="margin: 0 auto; background: var(--itip-light-blue);" onclick="goToScreen('screen-reg')">📝 Abrir Formulario de Registro Examen</button>
                 </div>
-
-                <h3>1. Formulario de Registro para el Examen Real (Módulo 1)</h3>
-                <p><strong>⚠️ Advertencia de Vigilancia:</strong> La cámara de tu computador te estará vigilando y grabando durante el proceso de registro y la ejecución del examen. Mantén buena postura y asegúrate de estar en un espacio iluminado.</p>
-                <p><strong>📄 Requisito de Identidad:</strong> Ten lista digitalmente tu cédula o documento de identidad en el computador para cargarlo o tómale una foto en tiempo real abriendo la cámara del sistema. Ten clara también tu dirección de residencia exacta.</p>
-                
-                <p style="margin-top: 10px; font-weight: bold; color: var(--itip-blue);">Traducción y guía exacta de qué escribir en cada casilla del formulario:</p>
-                <ul>
-                    <li><strong>Last (Family or Surname) Name:</strong> Escribe tu apellido completo (Ej. Alvarez Salamanca).</li>
-                    <li><strong>First Name (Given Name):</strong> Escribe tu nombre de pila (Ej. Hollman).</li>
-                    <li><strong>Identification / Cédula Number:</strong> Tu número de documento oficial de identidad sin puntos ni espacios.</li>
-                    <li><strong>Address of Residence:</strong> Tu dirección exacta de residencia para validación de envío de certificado.</li>
-                    <li><strong>Email Address:</strong> Correo electrónico activo y personal (preferiblemente institucional @campuslatinoamerica.edu.co).</li>
-                    <li><strong>Gender:</strong> Selecciona tu género (Male para masculino, Female para femenino).</li>
-                    <li><strong>Country of Residence:</strong> Selecciona tu país de residencia actual (Ej. Colombia).</li>
-                    <li><strong>Native Language:</strong> Selecciona tu lengua nativa (Spanish).</li>
-                </ul>
-
-                <h3>2. Requisitos por Sección en el Panel</h3>
-                <ul>
-                    <li><strong>Gramática:</strong> Resuelve y analiza las estructuras de los 22 tiempos requeridos.</li>
-                    <li><strong>Lectura (Reading):</strong> Lee con atención los textos y responde cada ítem de comprensión.</li>
-                    <li><strong>Escritura:</strong> Redacta los ensayos cortos aplicando sintaxis formal.</li>
-                    <li><strong>Palabra Incorrecta:</strong> Detecta y corrige los errores léxicos a contrarreloj.</li>
-                    <li><strong>Speaking:</strong> Practica tu fluidez, modulación y técnicas de parafraseo mediante audio.</li>
-                </ul>
+                <h3>1. Formulario de Registro para el Examen Real</h3>
+                <p><strong>⚠️ Advertencia de Vigilancia:</strong> La cámara de tu computador te estará vigilando y grabando durante el proceso.</p>
             </div>
             <div class="btn-group">
                 <button class="btn-itip" style="background: #64748b; width: auto; padding: 11px 20px; margin:0;" onclick="goToScreen('screen-home')">⬅️ Volver</button>
@@ -276,7 +127,7 @@
             </div>
         </div>
 
-        <!-- DASHBOARD / MENÚ PRINCIPAL DE MÓDULOS -->
+        <!-- DASHBOARD / MENÚ PRINCIPAL -->
         <div id="screen-dashboard" class="screen">
             <div class="preview-header">
                 <h1>iTEP Dashboard Principal</h1>
@@ -286,13 +137,13 @@
                 <div class="module-card" onclick="goToScreen('screen-reg')">
                     <div>
                         <h3>1. Formulario de Registro Examen</h3>
-                        <p>Acceso a examen real, validación con cámara, cédula y campos traducidos.</p>
+                        <p>Acceso a examen real, validación con cámara y cédula.</p>
                     </div>
                     <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 12px;">Iniciar Registro ➔</span>
                 </div>
                 <a href="preguntasitep.html" class="module-card">
                     <div>
-                        <h3>2. Gramática</h3>
+                        <h3>2. Gramática (Grammar)</h3>
                         <p>Evaluación interactiva de estructuras gramaticales avanzadas.</p>
                     </div>
                     <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 12px;">Practicar ➔</span>
@@ -311,12 +162,13 @@
                     </div>
                     <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 12px;">Practicar ➔</span>
                 </a>
-                <a href="palabraincorrectaitep.html" class="module-card">
+                <!-- ENLACE CORREGIDO AQUÍ ABAJO -->
+                <a href="palabraincorrectaitep.html" class="module-card" style="border-left: 4px solid #d97706;">
                     <div>
-                        <h3>5. Palabra Incorrecta</h3>
+                        <h3>5. Palabra Incorrecta (Error Identification)</h3>
                         <p>Identificación rápida de errores de concordancia y léxico.</p>
                     </div>
-                    <span style="font-size: 12px; font-weight: 600; color: var(--itip-light-blue); margin-top: 12px;">Practicar ➔</span>
+                    <span style="font-size: 12px; font-weight: 600; color: #d97706; margin-top: 12px;">Practicar ➔</span>
                 </a>
                 <a href="speakingitep.html" class="module-card">
                     <div>
@@ -333,73 +185,32 @@
             </div>
         </div>
 
-        <!-- PANTALLA DE REGISTRO / FORMULARIO (Módulo 1) -->
+        <!-- PANTALLA DE REGISTRO -->
         <div id="screen-reg" class="screen">
             <div class="preview-header">
                 <h1>iTEP Registration — Examen Real</h1>
                 <h2>Formulario Oficial de Registro y Validación por Cámara</h2>
             </div>
-            <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; color: #1e3a8a;">
-                📷 <strong>Aviso de Proctoring (Cámara activa):</strong> Su cámara web se encuentra encendida para la captura de identidad y supervisión en tiempo real. Tenga su cédula lista.
-            </div>
             <div class="reg-box">
                 <div class="form-group">
-                    <label>Last (Family or Surname) Name <small style="display:block; color:var(--text-muted); font-weight:normal;">(Apellido)</small>:</label>
+                    <label>Last Name (Apellido):</label>
                     <input type="text" id="reg-lastname" placeholder="Ej. Alvarez Salamanca">
                 </div>
                 <div class="form-group">
-                    <label>First Name (Given Name) <small style="display:block; color:var(--text-muted); font-weight:normal;">(Nombre)</small>:</label>
+                    <label>First Name (Nombre):</label>
                     <input type="text" id="reg-firstname" placeholder="Ej. Hollman">
                 </div>
                 <div class="form-group">
-                    <label>* Identification / Cédula Number <small style="display:block; color:var(--text-muted); font-weight:normal;">(Número de Documento)</small>:</label>
-                    <input type="text" id="reg-id" placeholder="Número de documento oficial">
-                </div>
-                <div class="form-group">
-                    <label>* Address of Residence <small style="display:block; color:var(--text-muted); font-weight:normal;">(Dirección de Residencia)</small>:</label>
-                    <input type="text" id="reg-address" placeholder="Ej. Calle Principal # 12-34">
-                </div>
-                <div class="form-group">
-                    <label>* Email Address <small style="display:block; color:var(--text-muted); font-weight:normal;">(Correo Electrónico)</small>:</label>
-                    <input type="email" id="reg-email" placeholder="correo@campuslatinoamerica.edu.co">
-                </div>
-                <div class="form-group">
-                    <label>* Gender <small style="display:block; color:var(--text-muted); font-weight:normal;">(Género)</small>:</label>
-                    <div class="radio-group">
-                        <label style="font-weight: normal; cursor:pointer;"><input type="radio" name="gender" value="Male"> Male</label>
-                        <label style="font-weight: normal; cursor:pointer;"><input type="radio" name="gender" value="Female"> Female</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>* Country of Residence <small style="display:block; color:var(--text-muted); font-weight:normal;">(País de Residencia)</small>:</label>
-                    <select id="reg-country">
-                        <option value="">Select Country</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Mexico">México</option>
-                        <option value="Peru">Perú</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>* Native Language <small style="display:block; color:var(--text-muted); font-weight:normal;">(Lengua Nativa)</small>:</label>
-                    <select id="reg-native">
-                        <option value="">Select Language</option>
-                        <option value="Spanish">Spanish</option>
-                        <option value="English">English</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Agency Name <small style="display:block; color:var(--text-muted); font-weight:normal;">(Centro Autorizado)</small>:</label>
-                    <input type="text" value="CampusLA & Escuela Andina" readonly style="background: #f1f5f9;">
+                    <label>* Identification Number:</label>
+                    <input type="text" id="reg-id" placeholder="Número de documento">
                 </div>
             </div>
             <div class="btn-group">
-                <button class="btn-itip" style="background: #64748b; width: auto; padding: 11px 20px; margin:0;" onclick="goToScreen('screen-instructions')">⬅️ Volver al Instructivo</button>
-                <a href="preguntasitep.html" class="btn-itip" style="background: var(--itip-light-blue); width: auto; padding: 11px 20px; margin:0; text-decoration: none;">Guardar y Avanzar a Gramática ➔</a>
+                <button class="btn-itip" style="background: #64748b; width: auto; padding: 11px 20px; margin:0;" onclick="goToScreen('screen-instructions')">⬅️ Volver</button>
+                <a href="preguntasitep.html" class="btn-itip" style="background: var(--itip-light-blue); width: auto; padding: 11px 20px; margin:0; text-decoration: none;">Avanzar a Gramática ➔</a>
             </div>
         </div>
-
     </div>
-
     <script>
         function goToScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
